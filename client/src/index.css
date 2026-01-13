@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4: Define custom colors here (this generates both utility classes AND CSS variables) */
+@theme {
+    /* Brand Colors - Grayscale Scheme */
+    --color-primary-*: initial;
+    --color-primary: #222222;        /* Dark gray - primary text, headings, buttons */
+    --color-primary-hover: #000000;  /* Pure black - hover state */
+    --color-secondary-*: initial;
+    --color-secondary: #7B7B7B;      /* Medium gray - secondary text, borders */
+    --color-secondary-hover: #5a5a5a; /* Darker gray - hover state */
+    --color-tertiary-*: initial;
+    --color-tertiary: #F8F8F8;       /* Off-white - backgrounds, cards */
+    --color-tertiary-hover: #efefef; /* Slightly darker - hover state */
+    --color-white-*: initial;
+    --color-white: #FFFFFF;          /* Pure white - main backgrounds */
+    /* Wave Colors - Option 1: Purple-Dominant (from Interactive3DWave) */
+    --color-wave-*: initial;
+    --color-wave-primary: #DC8AF5;   /* Wave Purple - Main brand color */
+    --color-wave-secondary: #F58AD8; /* Wave Magenta - CTAs, buttons */
+    --color-wave-accent: #8AB3F5;    /* Wave Blue - Links, highlights */
+    --color-wave-bg: #000000;        /* Canvas Black - dark backgrounds */
+    --color-wave-overlay: rgba(0, 0, 0, 0.2); /* Overlay effect */
+    /* Full Wave Spectrum (for gradients and variety) */
+    --color-wave-blue: #8AB3F5;      /* Front particles */
+    --color-wave-periwinkle: #8A8AF5;
+    --color-wave-lavender: #B38AF5;
+    --color-wave-purple: #DC8AF5;    /* Center particles */
+    --color-wave-magenta: #F58AD8;
+    --color-wave-pink: #F58AAD;
+    --color-wave-rose: #F58A93;      /* Back particles */
+    /* Neutral palette - extended grayscale for flexibility */
+    --color-neutral-50: #fafafa;
+    --color-neutral-100: #f5f5f5;
+    --color-neutral-200: #e5e5e5;
+    --color-neutral-300: #d4d4d4;
+    --color-neutral-400: #a3a3a3;
+    --color-neutral-500: #737373;
+    --color-neutral-600: #525252;
+    --color-neutral-700: #404040;
+    --color-neutral-800: #262626;
+    --color-neutral-900: #171717;
+    --color-neutral-950: #0a0a0a;
+
+    /* Font families */
+    --font-family-sans: 'Inter', system-ui, sans-serif;
+    --font-family-mono: 'IBM Plex Mono', monospace;
+    --font-monoton: 'Monoton', sans-serif;
+    --font-aeonik: 'Aeonik', sans-serif;
+
+    /* Layout */
+    --navbar-height: 50px; /* Fixed height - matches h-16 in Navbar */
+    /* Animations */
+    --animate-fade-up: fade-up 1s ease-out forwards;
+}
+
+@layer base {
+    /* Aeonik Light - 300 */
+    @font-face {
+        font-family: 'Aeonik';
+        src: url('./assets/fonts/aeonik/AeonikTRIAL-Light.woff2') format('woff2'),
+        url('./assets/fonts/aeonik/AeonikTRIAL-Light.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    /* Aeonik Regular - 400 (uncomment when you add the files) */
+    @font-face {
+        font-family: 'Aeonik';
+        src: url('./assets/fonts/aeonik/AeonikTRIAL-Regular.woff2') format('woff2'),
+        url('./assets/fonts/aeonik/AeonikTRIAL-Regular.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+    /* Aeonik Medium - 500 (uncomment when you add the files) */
+    /* @font-face {
+        font-family: 'Aeonik';
+        src: url('./assets/fonts/aeonik/AeonikTRIAL-Medium.woff2') format('woff2'),
+             url('./assets/fonts/aeonik/AeonikTRIAL-Medium.woff') format('woff');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+    } */
+    /* Aeonik Bold - 700 (uncomment when you add the files) */
+    @font-face {
+        font-family: 'Aeonik';
+        src: url('./assets/fonts/aeonik/AeonikTRIAL-Bold.woff2') format('woff2'),
+        url('./assets/fonts/aeonik/AeonikTRIAL-Bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    :root {
+        /* Typography */
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1;
+        font-weight: 400;
+
+        /* Rendering optimizations */
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /*background-color: var(--color-neutral-950);*/
+    }
+
+    body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+    }
+
+    /* Example: Using custom colors in CSS */
+    h1 {
+        color: var(--color-primary);
+    }
+
+    a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: var(--color-secondary);
+    }
+}
+
+/* Keyframe animations */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    80% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #222222;
+    }
+}
+
+@keyframes water-flow {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes water-shine {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
+}
+
+/* Custom utilities for fixed-width containers */
+/* These use px instead of rem to prevent layout shrinking when browser font size changes */
+@layer utilities {
+    .max-w-container-sm {
+        max-width: 768px;
+    }
+
+    .max-w-container-md {
+        max-width: 896px;
+    }
+
+    .max-w-container-lg {
+        max-width: 1024px;
+    }
+
+    .max-w-container-xl {
+        max-width: 1280px;
+    }
+
+    .max-w-container-2xl {
+        max-width: 1536px;
+    }
+
+    /* Hero text animations */
+    .animate-fade-up {
+        animation: fade-up 1s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 0.4s;
+    }
+
+    .animation-delay-600 {
+        animation-delay: 0.6s;
+    }
+
+    .animation-delay-800 {
+        animation-delay: 0.8s;
+    }
+
+    .animation-delay-1000 {
+        animation-delay: 1s;
+    }
+
+    .general-button {
+        background: var(--color-neutral-950);
+        padding: 12px 16px;
+        border: 2px solid var(--color-neutral-700);
+        border-radius: 8px;
+        color: var(--color-neutral-400);
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .general-button:hover {
+        scale: 1.05;
+        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+    }
+
+    /* Primary button with gradient border and text */
+    .primary-button {
+        position: relative;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 2px solid transparent;
+        background-image: linear-gradient(#0a0a0a, #0a0a0a), linear-gradient(135deg, #DC8AF5, #F58AD8);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow: 0 4px 15px rgba(220, 138, 245, 0.4), 0 0 20px rgba(220, 138, 245, 0.2);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        font-size: 12px;
+    }
+
+    .primary-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(220, 138, 245, 0.4),
+                rgba(245, 138, 216, 0.4),
+                transparent
+        );
+        animation: water-flow 3s ease-in-out infinite;
+    }
+
+    .primary-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+    }
+
+    .primary-button:hover::before {
+        animation: water-flow 1.5s ease-in-out infinite;
+    }
+
+    .secondary-button {
+        background: var(--color-neutral-950);
+        padding: 12px 16px;
+        border: 2px solid var(--color-wave-blue);
+        border-radius: 8px;
+        color: var(--color-wave-blue);
+        font-weight: 600;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        font-size: 12px;
+    }
+
+    .secondary-button:hover {
+        scale: 1.05;
+        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+    }
+
+    @media (min-width: 768px) {
+        .primary-button {
+            padding: 16px 20px;
+            font-size: 14px;
+        }
+
+        .secondary-button {
+            padding: 16px 20px;
+            font-size: 14px;
+        }
+
+        .general-button {
+            padding: 16px 20px;
+            font-size: 14px;
+        }
+    }
+
+    .primary-button-text {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #DC8AF5, #F58AD8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .navbar-buttons {
+        padding: 8px 16px;
+        transition: color;
+        color: var(--color-neutral-300);
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .navbar-buttons:hover {
+        background: color-mix(in srgb, var(--color-wave-secondary) 10%, transparent);
+        border-radius: 16px;
+        color: var(--color-wave-primary);
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, #DC8AF5, #F58AD8, #8AB3F5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 4px 8px rgba(220, 138, 245, 0.4)) drop-shadow(0 8px 16px rgba(139, 179, 245, 0.3));
+    }
+
+    /* Water drop button styles */
+    .water-drop {
+        position: relative;
+        height: 50px;
+        width: 180px;
+        border-radius: 30px;
+        box-shadow: 5px 5px 10px #0008, 10px 6px 15px #0008 inset, -5px -5px 8px #f5f5ff inset, 10px 6px 15px #0004 inset, 0 0 8px #0005;
+        display: grid;
+        place-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: #65a;
+        letter-spacing: 3px;
+        text-shadow: 20px 2px 5px #0008;
+        text-transform: uppercase;
+        transition: all 0.3s;
+    }
+
+    .water-drop::before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        width: 13px;
+        background: #fff8;
+        border-radius: 50%;
+        left: 10px;
+        top: 9px;
+        transform: rotate(-40deg);
+    }
+
+    .water-drop:hover {
+        letter-spacing: 6px;
+    }
+
+    /* HTML Code typing animation */
+    .code-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .typing-code {
+        display: inline-block;
+        overflow: hidden;
+        white-space: pre;
+        width: 0;
+        border-right: 3px solid #222222;
+        animation: typing 8s steps(200, end) infinite,
+        blink-caret 0.75s step-end infinite;
+        vertical-align: top;
+    }
+}
+
+.navbar-height {
+    height: var(--navbar-height);
+}
+
