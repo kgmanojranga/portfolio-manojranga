@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../router/routes';
 import Container from '../common/Container';
+import profileImage from '../../assets/images/profile-image-2.png';
 // import ThemeToggle from '../common/ThemeToggle'; // Removed - dark mode only
 
 const Navbar = () => {
@@ -25,10 +26,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-full">
           <Link
             to={ROUTES.HOME}
-            className="text-xl tracking-[0.25em] sm:text-xl font-bold text-neutral-800 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+            className="flex items-center"
             onClick={closeMenu}
           >
-            {'<MANOJ>'}
+            <img
+              src={profileImage}
+              alt="Manoj Profile"
+              className="w-10 h-10 rounded-full profile-image object-cover"
+            />
           </Link>
 
           {/* Desktop Menu */}
