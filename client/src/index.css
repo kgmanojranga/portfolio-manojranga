@@ -109,10 +109,17 @@
         /*background-color: var(--color-neutral-950);*/
     }
 
+    html {
+        /* Prevent overscroll bounce effect */
+        overscroll-behavior-y: none;
+    }
+
     body {
         margin: 0;
         min-width: 320px;
         min-height: 100vh;
+        /* Prevent overscroll bounce effect */
+        overscroll-behavior-y: none;
     }
 
     /* Example: Using custom colors in CSS */
@@ -337,16 +344,19 @@
 
     .navbar-buttons {
         padding: 8px 16px;
-        transition: color;
         color: var(--color-neutral-300);
         font-size: 14px;
         font-weight: 600;
+        transition: all 0.3s ease;
     }
 
     .navbar-buttons:hover {
-        background: color-mix(in srgb, var(--color-wave-secondary) 10%, transparent);
+        background: color-mix(in srgb, var(--color-wave-secondary) 5%, transparent);
         border-radius: 16px;
         color: var(--color-wave-primary);
+        border-color: var(--color-wave-primary);
+        box-shadow: 0 0 12px rgba(220, 138, 245, 0.4);
+        transform: scale(1.05);
     }
 
     .text-gradient {
@@ -406,6 +416,17 @@
         animation: typing 8s steps(200, end) infinite,
         blink-caret 0.75s step-end infinite;
         vertical-align: top;
+    }
+
+    .profile-image {
+        border: 2px solid var(--color-neutral-700);
+        transition: all 0.3s ease;
+    }
+
+    .profile-image:hover {
+        border-color: var(--color-wave-primary);
+        box-shadow: 0 0 12px rgba(220, 138, 245, 0.4);
+        transform: scale(1.05);
     }
 }
 
