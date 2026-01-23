@@ -155,9 +155,7 @@ const Interactive3DWave = () => {
       const height = canvas.height;
 
       // Trail effect - black for dark mode, white for light mode
-      ctx.fillStyle = isDark
-        ? 'rgba(0, 0, 0, 0.2)'
-        : 'rgba(255, 255, 255, 0.2)';
+      ctx.fillStyle = isDark ? 'rgba(5, 5, 5, 1)' : 'rgba(255, 255, 255, 0.2)';
       ctx.fillRect(0, 0, width, height);
 
       particlesRef.current.forEach((p) =>
