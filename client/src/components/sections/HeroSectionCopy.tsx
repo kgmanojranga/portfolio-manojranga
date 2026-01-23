@@ -22,7 +22,7 @@ const HeroSectionCopy = () => {
       />
 
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/50 md:bg-black/10" />
 
       <Container className="w-full flex gap-8 relative z-10">
         <div className="w-full md:max-w-2xl flex flex-col gap-4 md:gap-8 items-center md:items-start">
@@ -75,7 +75,7 @@ const HeroSectionCopy = () => {
           </h3>
 
           {/* Brief Introduction */}
-          <p className="text-center md:text-left text-white text-[12px] sm:text-[14p] md:text-[16px] max-w-[700px] leading-relaxed px-4 md:px-0 animate-fade-up animation-delay-600">
+          <p className="text-center md:text-left text-white text-[12px] md:text-[14px]  max-w-[500px] leading-relaxed px-4 md:px-0 animate-fade-up animation-delay-600">
             Passionate about building scalable web applications and creating
             seamless user experiences. Specialized in full-stack development
             with modern technologies.
