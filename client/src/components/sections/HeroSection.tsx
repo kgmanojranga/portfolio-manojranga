@@ -1,17 +1,38 @@
 import Container from '../common/Container';
+import heroProfileImage from '../../assets/images/hero-profile-image.png';
+import heroProfileImage2 from '../../assets/images/hero-profile-image-3.png';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center py-8">
-      <Container className="w-full flex gap-8">
-        <div className="flex-1 flex flex-col gap-4 md:gap-8 items-center">
+    <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center py-8 relative">
+      {/* Background image for small screens */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: `url(${heroProfileImage2})`,
+        }}
+      />
+
+      {/* Background image for medium and larger screens */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
+        style={{
+          backgroundImage: `url(${heroProfileImage})`,
+        }}
+      />
+
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/50 md:bg-black/10" />
+
+      <Container className="w-full flex gap-8 relative z-10">
+        <div className="w-full md:max-w-2xl flex flex-col gap-4 md:gap-8 items-center md:items-start">
           {/* HELLO! - Largest, full gradient */}
-          <h1 className="text-gradient text-center font-aeonik text-[68px] sm:text-[96px] md:text-[128px] tracking-[-0.05em] leading-none animate-fade-up">
+          <h1 className="text-gradient text-center md:text-left font-aeonik text-[68px] sm:text-[96px] md:text-[128px] tracking-[-0.05em] leading-none animate-fade-up">
             HELLO!
           </h1>
 
           {/* I'm Manoj Ranga - Medium size, gradient only on name */}
-          <h2 className="text-center font-aeonik text-[30px] sm:text-[36px] md:text-[48px] leading-tight animate-fade-up animation-delay-200">
+          <h2 className="text-center md:text-left font-aeonik text-[30px] sm:text-[36px] md:text-[48px] leading-tight animate-fade-up animation-delay-200">
             <span
               className="text-neutral-400"
               style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)' }}
@@ -35,7 +56,7 @@ const HeroSection = () => {
           </h2>
 
           {/* a Software Engineer - Smallest, clean white */}
-          <h3 className="text-center font-aeonik text-[24px] sm:text-[30px] md:text-[36px] tracking-[-0.05em] leading-tight animate-fade-up animation-delay-400">
+          <h3 className="text-center md:text-left font-aeonik text-[24px] sm:text-[30px] md:text-[36px] tracking-[-0.05em] leading-tight animate-fade-up animation-delay-400">
             <span
               className="text-neutral-400"
               style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)' }}
@@ -54,14 +75,14 @@ const HeroSection = () => {
           </h3>
 
           {/* Brief Introduction */}
-          <p className="text-center text-white text-[12px] sm:text-[14p] md:text-[16px] max-w-[700px] leading-relaxed px-4 animate-fade-up animation-delay-600">
+          <p className="text-center md:text-left text-white text-[12px] md:text-[14px]  max-w-[500px] leading-relaxed px-4 md:px-0 animate-fade-up animation-delay-600">
             Passionate about building scalable web applications and creating
             seamless user experiences. Specialized in full-stack development
             with modern technologies.
           </p>
 
           {/* Call-to-Action Buttons */}
-          <div className="flex flex-wrap gap-3 md:gap-4 justify-center items-center animate-fade-up animation-delay-800 px-4">
+          <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start items-center animate-fade-up animation-delay-800 px-4 md:px-0">
             <a href="#projects" className="primary-button">
               <span className="primary-button-text">View Projects</span>
             </a>
@@ -74,7 +95,7 @@ const HeroSection = () => {
           </div>
 
           {/* Quick Links & Email */}
-          <div className="flex flex-col items-center gap-4 animate-fade-up animation-delay-1000">
+          <div className="flex flex-col items-center md:items-start gap-4 animate-fade-up animation-delay-1000">
             {/* Email */}
             <a
               href="mailto:manojranga7583@gmail.com"
