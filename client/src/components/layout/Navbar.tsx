@@ -59,7 +59,7 @@ const Navbar = () => {
               aria-label="Toggle menu"
             >
               <svg
-                className="w-6 h-6 text-neutral-600 dark:text-neutral-300"
+                className="w-4 h-4 text-neutral-600 dark:text-neutral-300"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -79,13 +79,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
-            <ul className="space-y-2">
+          <div className="md:hidden pb-4 mt-2">
+            <ul className="space-y-2 p-4 bg-white/10 rounded-md">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="block py-2 px-4 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white font-medium transition-colors rounded-lg"
+                    className="block py-2 px-4 text-neutral-600 dark:text-neutral-300 dark:hover:text-white transition-colors text-[12px]"
                     onClick={closeMenu}
                   >
                     {link.label}
