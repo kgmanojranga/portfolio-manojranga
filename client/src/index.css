@@ -345,8 +345,8 @@
     .navbar-buttons {
         padding: 8px 16px;
         color: var(--color-neutral-300);
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 12px;
+        font-weight: 400;
         transition: all 0.3s ease;
     }
 
@@ -355,7 +355,7 @@
         border-radius: 16px;
         color: var(--color-wave-primary);
         border-color: var(--color-wave-primary);
-        box-shadow: 0 0 12px rgba(220, 138, 245, 0.4);
+        box-shadow: 0 0 5px rgba(220, 138, 245, 0.4);
         transform: scale(1.05);
     }
 
