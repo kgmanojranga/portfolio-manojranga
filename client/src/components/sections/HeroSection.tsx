@@ -1,25 +1,8 @@
-import { useEffect, useState } from 'react';
 import Container from '../common/Container';
 import heroProfileImage from '../../assets/images/hero-profile-image.png';
 import heroProfileImage2 from '../../assets/images/hero-profile-image-3.png';
 
 const HeroSection = () => {
-  const [scrollOpacity, setScrollOpacity] = useState(0.7);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 500; // Distance to scroll for full fade effect
-
-      // Calculate opacity: starts at 0.6, decreases as you scroll down
-      const newOpacity = Math.max(0, 0.7 - (scrollY / maxScroll) * 0.7);
-      setScrollOpacity(newOpacity);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center py-8 relative">
       {/* Background image for small screens */}
@@ -27,7 +10,6 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden transition-opacity duration-100"
         style={{
           backgroundImage: `url(${heroProfileImage2})`,
-          opacity: scrollOpacity,
         }}
       />
 
@@ -36,7 +18,6 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block transition-opacity duration-100"
         style={{
           backgroundImage: `url(${heroProfileImage})`,
-          opacity: scrollOpacity,
         }}
       />
 
