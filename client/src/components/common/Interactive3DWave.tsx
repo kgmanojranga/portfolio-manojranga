@@ -14,14 +14,16 @@ class Particle {
   baseHue: number;
   currentMouseOffsetX: number;
   currentMouseOffsetY: number;
+  size: 'small' | 'large'; // Particle size
 
-  constructor(x: number, y: number, z: number) {
+  constructor(x: number, y: number, z: number, size: 'small' | 'large') {
     this.originX = x;
     this.originY = y;
     this.originZ = z;
     this.baseHue = 280 + z / 10;
     this.currentMouseOffsetX = 0;
     this.currentMouseOffsetY = 0;
+    this.size = size;
   }
 
   getColor(isDark: boolean): string {
@@ -70,8 +72,8 @@ class Particle {
       // Calculate influence factor (stronger when closer)
       const influence = 1 - dist / mouse.radius;
       // Push the wave horizontally and vertically based on mouse position and distance
-      targetMouseOffsetX = influence * dx * 0.35;
-      targetMouseOffsetY = influence * dy * 0.45;
+      targetMouseOffsetX = influence * dx * 0.05;
+      targetMouseOffsetY = influence * dy * 0.05;
     }
 
     // Smoothly interpolate to target with delay (heavy mesh feel)
@@ -91,11 +93,18 @@ class Particle {
     this.render(ctx, screenX, screenY, scale, isDark);
   }
 
-  render(ctx: CanvasRenderingContext2D, sx: number, sy: number, scale: number, isDark: boolean) {
+  render(
+    ctx: CanvasRenderingContext2D,
+    sx: number,
+    sy: number,
+    scale: number,
+    isDark: boolean
+  ) {
     ctx.fillStyle = this.getColor(isDark);
     ctx.beginPath();
-    // Scale size based on depth
-    ctx.arc(sx, sy, scale, 0, Math.PI * 2);
+    // Different sizes based on particle type
+    const radius = this.size === 'large' ? scale * 1.5 : scale * 0.7;
+    ctx.arc(sx, sy, radius, 0, Math.PI * 2);
     ctx.fill();
   }
 }
@@ -107,10 +116,10 @@ const Interactive3DWave = () => {
   const mouseRef = useRef<Mouse>({ x: -1000, y: -1000, radius: 250 });
   const animationFrameRef = useRef<number | undefined>(undefined);
 
-  // Configuration
-  const ROWS = 40;
-  const COLS = 40;
-  const SPACING = 30;
+  // Configuration - Closer dots and more particles
+  const ROWS = 50;
+  const COLS = 50;
+  const SPACING = 20; // Reduced from 30 to 20 for closer dots
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -133,7 +142,10 @@ const Interactive3DWave = () => {
           const z = (i - ROWS / 2) * SPACING;
           const y = height / 4; // Vertical "floor" level
 
-          particlesRef.current.push(new Particle(x, y, z));
+          // Alternate particle sizes in a checkerboard pattern
+          const size = (i + j) % 2 === 0 ? 'large' : 'small';
+
+          particlesRef.current.push(new Particle(x, y, z, size));
         }
       }
     };
@@ -143,7 +155,7 @@ const Interactive3DWave = () => {
       const height = canvas.height;
 
       // Trail effect - black for dark mode, white for light mode
-      ctx.fillStyle = isDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)';
+      ctx.fillStyle = isDark ? 'rgba(5, 5, 5, 1)' : 'rgba(255, 255, 255, 0.2)';
       ctx.fillRect(0, 0, width, height);
 
       particlesRef.current.forEach((p) =>

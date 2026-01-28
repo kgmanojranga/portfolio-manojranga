@@ -20,14 +20,7 @@ const portfolioData: PortfolioData = {
       id: '1',
       name: 'Programming Languages',
       category: 'languages',
-      items: [
-        'JavaScript',
-        'TypeScript',
-        'C#',
-        'Java',
-        'Solidity',
-        'Rust',
-      ],
+      items: ['JavaScript', 'TypeScript', 'C#', 'Java', 'Solidity', 'Rust'],
     },
     {
       id: '2',
@@ -80,7 +73,15 @@ const portfolioData: PortfolioData = {
       id: '5',
       name: 'Database Management',
       category: 'database',
-      items: ['PostgreSQL', 'MySQL', 'Firebase', 'Firestore', 'Redis', 'Prisma ORM', 'BullMQ'],
+      items: [
+        'PostgreSQL',
+        'MySQL',
+        'Firebase',
+        'Firestore',
+        'Redis',
+        'Prisma ORM',
+        'BullMQ',
+      ],
     },
     {
       id: '6',
@@ -232,7 +233,8 @@ const portfolioData: PortfolioData = {
     },
     {
       id: '3',
-      title: 'Scooby-Doo Character Studio - End-to-End Test Automation Framework',
+      title:
+        'Scooby-Doo Character Studio - End-to-End Test Automation Framework',
       description:
         'End-to-end test automation framework for AI-powered character generation platform',
       role: 'Quality Assurance',

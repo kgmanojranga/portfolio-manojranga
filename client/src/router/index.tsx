@@ -5,7 +5,6 @@ import AboutPage from '../pages/AboutPage';
 import ProjectsPage from '../pages/ProjectsPage';
 import ContactPage from '../pages/ContactPage';
 import ResumePage from '../pages/ResumePage';
-import ColorSystemPage from '../pages/ColorSystemPage';
 import { ROUTES } from './routes';
 
 export const router = createBrowserRouter([
@@ -32,10 +31,6 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.RESUME,
         element: <ResumePage />,
-      },
-      {
-        path: ROUTES.COLOR_SYSTEM,
-        element: <ColorSystemPage />,
       },
     ],
   },

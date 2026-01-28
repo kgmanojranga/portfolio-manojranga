@@ -290,7 +290,7 @@ export default {
 `src/index.css`:
 
 ```css
-@import "tailwindcss";
+@import "../../node_modules/tailwindcss";
 ```
 
 **Note**: Tailwind v4 uses a single `@import` instead of the v3 directives:
