@@ -17,7 +17,6 @@ const Navbar = () => {
     { to: ROUTES.PROJECTS, label: 'Projects' },
     { to: ROUTES.CONTACT, label: 'Contact' },
     { to: ROUTES.RESUME, label: 'Resume' },
-    { to: ROUTES.COLOR_SYSTEM, label: 'Colors' },
   ];
 
   return (
