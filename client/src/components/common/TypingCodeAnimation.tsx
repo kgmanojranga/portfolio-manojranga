@@ -51,7 +51,9 @@ const TypingCodeAnimation = ({
   }, [code, typingSpeed, pauseDuration, caretBlinkSpeed]);
 
   return (
-    <div className={`bg-white p-8 rounded-lg shadow-lg overflow-y-auto ${containerClassName}`}>
+    <div
+      className={`bg-white p-8 rounded-lg shadow-lg overflow-y-auto ${containerClassName}`}
+    >
       <pre className={`font-mono text-sm text-neutral-950 m-0 ${className}`}>
         <code>{displayedCode}</code>
         <span

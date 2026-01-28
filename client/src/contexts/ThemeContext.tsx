@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -12,17 +19,14 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
-  const [isDark, setIsDark] = useState(true);
 
-  // Load saved theme from localStorage on mount
-  // NOTE: Theme switching disabled - always uses dark mode
-  // To re-enable: uncomment below and add theme toggle UI components
-  // useEffect(() => {
-  //   const savedTheme = localStorage.getItem('theme') as Theme | null;
-  //   if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
-  //     setTheme(savedTheme);
-  //   }
-  // }, []);
+  // Derive isDark from theme without storing in state
+  const isDark = useMemo(() => {
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return theme === 'dark';
+  }, [theme]);
 
   // Apply theme whenever it changes
   useEffect(() => {
@@ -35,7 +39,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     if (theme === 'system') {
       // Use system preference
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
         ? 'dark'
         : 'light';
       effectiveTheme = systemTheme;
@@ -45,7 +50,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     // Apply theme class to html element
     root.classList.add(effectiveTheme);
-    setIsDark(effectiveTheme === 'dark');
 
     // Save to localStorage
     localStorage.setItem('theme', theme);
@@ -61,7 +65,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.remove('light', 'dark');
       const systemTheme = mediaQuery.matches ? 'dark' : 'light';
       root.classList.add(systemTheme);
-      setIsDark(systemTheme === 'dark');
     };
 
     mediaQuery.addEventListener('change', handleChange);
@@ -75,6 +78,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {

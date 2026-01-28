@@ -25,9 +25,12 @@
 ## Project Overview
 
 ### Purpose
-A professional portfolio website for Manoj Ranga, showcasing his expertise as a Software Engineer specializing in full-stack development, blockchain solutions, and AI automation.
+
+A professional portfolio website for Manoj Ranga, showcasing his expertise as a Software Engineer specializing in
+full-stack development, blockchain solutions, and AI automation.
 
 ### Key Features
+
 - **Professional Portfolio**: Comprehensive showcase of projects and skills
 - **Responsive Design**: Mobile-first approach supporting all device sizes
 - **Dark Mode**: Class-based theme switching with user preference persistence
@@ -36,6 +39,7 @@ A professional portfolio website for Manoj Ranga, showcasing his expertise as a 
 - **Accessible**: WCAG compliant with semantic HTML
 
 ### Target Audience
+
 - Potential employers and recruiters
 - Freelance clients
 - Professional network connections
@@ -46,29 +50,35 @@ A professional portfolio website for Manoj Ranga, showcasing his expertise as a 
 ## Technology Stack
 
 ### Core Framework
+
 - **React**: v19.2.0 (Latest with new features)
 - **React DOM**: v19.2.0
 - **TypeScript**: v5.9.3
 - **Vite**: v7.2.4 (Build tool)
 
 ### Routing
+
 - **React Router DOM**: v7.11.0
 
 ### Styling
+
 - **Tailwind CSS**: v4.1.18 (Latest with @theme directive)
 - **PostCSS**: v8.5.6
 - **Autoprefixer**: v10.4.23
 
 ### Development Tools
+
 - **ESLint**: v9.39.1
 - **Prettier**: v3.7.4
 - **TypeScript ESLint**: v8.46.4
 
 ### Build Configuration
+
 - **Vite Plugin React**: v5.1.1
 - **Node Types**: v24.10.1
 
 ### Package Manager
+
 - **Yarn**: (Using yarn.lock)
 
 ---
@@ -155,70 +165,74 @@ portfolio/client/
 ### Color Palette
 
 #### Neutral Colors (Complete Scale)
+
 Used for backgrounds, borders, and text in dark theme:
 
-| Shade | Hex Code | Usage |
-|-------|----------|-------|
-| neutral-50 | #f9fafb | Lightest backgrounds (light mode) |
-| neutral-100 | #f3f4f6 | Very light surfaces (light mode) |
-| neutral-200 | #e5e7eb | Light borders (light mode) |
-| neutral-300 | #d1d5db | Subtle borders |
-| neutral-400 | #9ca3af | Placeholder text |
-| neutral-500 | #6b7280 | Muted text |
-| neutral-600 | #4b5563 | Secondary text (dark mode) |
-| neutral-700 | #364151 | Buttons, interactive elements |
-| neutral-800 | #1d1f29 | Card backgrounds |
-| neutral-900 | #11131e | Section backgrounds |
-| neutral-950 | #030712 | Primary background (darkest) |
+| Shade       | Hex Code | Usage                             |
+|-------------|----------|-----------------------------------|
+| neutral-50  | #f9fafb  | Lightest backgrounds (light mode) |
+| neutral-100 | #f3f4f6  | Very light surfaces (light mode)  |
+| neutral-200 | #e5e7eb  | Light borders (light mode)        |
+| neutral-300 | #d1d5db  | Subtle borders                    |
+| neutral-400 | #9ca3af  | Placeholder text                  |
+| neutral-500 | #6b7280  | Muted text                        |
+| neutral-600 | #4b5563  | Secondary text (dark mode)        |
+| neutral-700 | #364151  | Buttons, interactive elements     |
+| neutral-800 | #1d1f29  | Card backgrounds                  |
+| neutral-900 | #11131e  | Section backgrounds               |
+| neutral-950 | #030712  | Primary background (darkest)      |
 
 #### Brand Colors
 
 **Primary (Cyan/Blue)**
+
 - Default: #00bbff - Links, buttons, brand elements
 - Hover: #00a3e0 - Hover state
 
 **Accent (Pink/Magenta)**
+
 - Default: #fb64b6 - Highlights, special emphasis
 - Hover: #e94fa0 - Hover state
 
 ### Typography
 
 #### Font Families
+
 - **Sans-serif (Inter)**: Primary UI font for all text
-  - Weights: 100-900
-  - Usage: Headings, body text, UI elements
+    - Weights: 100-900
+    - Usage: Headings, body text, UI elements
 
 - **Monospace (IBM Plex Mono)**: Code and technical content
-  - Weights: 100-700
-  - Usage: Code blocks, technical details
+    - Weights: 100-700
+    - Usage: Code blocks, technical details
 
 #### Font Scale
 
-| Class | Size | Usage |
-|-------|------|-------|
-| text-xs | 12px | Small labels, captions |
-| text-sm | 14px | Small text, metadata |
-| text-base | 16px | Body text (default) |
-| text-lg | 18px | Large body text |
-| text-xl | 20px | Small headings |
-| text-2xl | 24px | Section headings |
-| text-3xl | 30px | Page headings |
-| text-4xl | 36px | Hero headings |
-| text-5xl | 48px | Large hero headings |
-| text-6xl | 60px | Extra large headings |
+| Class     | Size | Usage                  |
+|-----------|------|------------------------|
+| text-xs   | 12px | Small labels, captions |
+| text-sm   | 14px | Small text, metadata   |
+| text-base | 16px | Body text (default)    |
+| text-lg   | 18px | Large body text        |
+| text-xl   | 20px | Small headings         |
+| text-2xl  | 24px | Section headings       |
+| text-3xl  | 30px | Page headings          |
+| text-4xl  | 36px | Hero headings          |
+| text-5xl  | 48px | Large hero headings    |
+| text-6xl  | 60px | Extra large headings   |
 
 ### Spacing System
 
 Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 
-| Class | Value | Common Use |
-|-------|-------|------------|
-| p-4 | 16px | Mobile padding |
-| sm:p-6 | 24px | Tablet padding |
-| lg:p-8 | 32px | Desktop padding |
-| py-12 | 48px | Section vertical padding (mobile) |
-| md:py-16 | 64px | Section padding (tablet) |
-| lg:py-20 | 80px | Section padding (desktop) |
+| Class    | Value | Common Use                        |
+|----------|-------|-----------------------------------|
+| p-4      | 16px  | Mobile padding                    |
+| sm:p-6   | 24px  | Tablet padding                    |
+| lg:p-8   | 32px  | Desktop padding                   |
+| py-12    | 48px  | Section vertical padding (mobile) |
+| md:py-16 | 64px  | Section padding (tablet)          |
+| lg:py-20 | 80px  | Section padding (desktop)         |
 
 ---
 
@@ -229,6 +243,7 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 **Purpose**: Landing page creating strong first impression
 
 **Sections**:
+
 - **Hero Section**: Name, title, tagline, CTA buttons
 - **About Preview**: Brief bio with "Learn More" link
 - **Skills Overview**: Key technologies as cards/badges
@@ -239,6 +254,7 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 - **Footer**: Navigation and social links
 
 **Key Content**:
+
 - Name: MANOJ RANGA
 - Title: Software Engineer
 - Tagline: Full-Stack Developer | Blockchain Engineer | AI Automation Specialist
@@ -249,6 +265,7 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 **Purpose**: Tell personal and professional story
 
 **Sections**:
+
 - Personal Introduction (background, transition from Civil Engineering)
 - Experience Timeline (work history with achievements)
 - Skills & Expertise (detailed technical skills)
@@ -259,10 +276,12 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 **Purpose**: Showcase technical work and abilities
 
 **Sections**:
+
 - Projects Grid/List with filtering
 - Project details (modal or separate page)
 
 **Featured Projects**:
+
 1. WeMeme - Solana DeFi Token Launch Platform
 2. Draftables - Fantasy Football Simulation
 3. CityHire - Enterprise Equipment Hire Management
@@ -273,12 +292,14 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 **Purpose**: Make it easy to reach out
 
 **Sections**:
+
 - Contact form (name, email, subject, message)
 - Contact information (email, phone, location)
 - Social links (GitHub, LinkedIn)
 - Availability status
 
 **Contact Information**:
+
 - Email: manojranga7583@gmail.com
 - Phone: +94 77 2641989
 - Location: Matara, Southern Province, Sri Lanka
@@ -288,6 +309,7 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 **Purpose**: Formatted, printable resume
 
 **Sections**:
+
 - Professional summary
 - Work experience
 - Education
@@ -301,15 +323,18 @@ Tailwind's default spacing scale (1 unit = 0.25rem = 4px):
 ### Layout Components
 
 #### Layout (src/components/layout/Layout.tsx)
+
 Main application wrapper providing consistent structure.
 
 **Features**:
+
 - Sticky header
 - Flexible content area
 - Footer pinned to bottom
 - Full viewport height
 
 **Usage**:
+
 ```tsx
 <Layout>
   <Outlet /> // Page content rendered here
@@ -317,9 +342,11 @@ Main application wrapper providing consistent structure.
 ```
 
 #### Navbar (src/components/layout/Navbar.tsx)
+
 Responsive navigation bar.
 
 **Features**:
+
 - Sticky positioning
 - Desktop horizontal menu
 - Mobile hamburger menu
@@ -327,19 +354,23 @@ Responsive navigation bar.
 - Active route highlighting
 
 **Responsive Behavior**:
+
 - Mobile: Hamburger menu, collapsible
 - Tablet+: Horizontal navigation links
 
 #### Footer (src/components/layout/Footer.tsx)
+
 Site footer with links and information.
 
 **Features**:
+
 - Multi-column layout
 - Social media links
 - Copyright notice
 - Navigation links
 
 **Responsive Grid**:
+
 - Mobile: 1 column
 - Tablet: 2 columns
 - Desktop: 3 columns
@@ -347,9 +378,11 @@ Site footer with links and information.
 ### Common Components
 
 #### Container (src/components/common/Container.tsx)
+
 Responsive container with max-width and padding.
 
 **Sizes**:
+
 - `sm`: 768px (forms, narrow content)
 - `md`: 896px (articles, blog posts)
 - `lg`: 1024px (dashboards, tables)
@@ -357,6 +390,7 @@ Responsive container with max-width and padding.
 - `full`: 100% (full-width sections)
 
 **Usage**:
+
 ```tsx
 <Container size="xl">
   {/* Content */}
@@ -364,27 +398,33 @@ Responsive container with max-width and padding.
 ```
 
 #### Button (src/components/common/Button.tsx)
+
 Reusable button component with variants.
 
 **Variants**:
+
 - Primary: bg-primary
 - Secondary: bg-neutral-700
 - Outline: border with transparent bg
 - Accent: bg-accent
 
 #### Badge (src/components/common/Badge.tsx)
+
 Tag/badge component for skills and tech stack.
 
 **Usage**:
+
 ```tsx
 <Badge color="primary">React</Badge>
 <Badge color="accent">TypeScript</Badge>
 ```
 
 #### ThemeToggle (src/components/common/ThemeToggle.tsx)
+
 Dark mode toggle button.
 
 **Features**:
+
 - Sun/moon icon
 - Persists preference to localStorage
 - Smooth transitions
@@ -392,9 +432,11 @@ Dark mode toggle button.
 ### Card Components
 
 #### ProjectCard (src/components/cards/ProjectCard.tsx)
+
 Display project information.
 
 **Features**:
+
 - Project thumbnail
 - Title and description
 - Technology badges
@@ -402,9 +444,11 @@ Display project information.
 - Hover effects
 
 #### SkillCard (src/components/cards/SkillCard.tsx)
+
 Display skill categories.
 
 **Features**:
+
 - Category icon
 - Skill tags
 - Proficiency indicators (optional)
@@ -428,6 +472,7 @@ xl:         ≥ 1280px  (Large desktops)
 ### Container System
 
 **Implementation Pattern**:
+
 ```tsx
 // Full-width background, contained content
 <section className="w-full bg-blue-600">
@@ -477,11 +522,13 @@ Base styles are for mobile, then enhanced for larger screens:
 ## Dark Mode Implementation
 
 ### Strategy
+
 Class-based dark mode with ThemeContext for state management.
 
 ### Configuration
 
 **Tailwind Config (tailwind.config.js)**:
+
 ```javascript
 export default {
   darkMode: 'class',
@@ -490,6 +537,7 @@ export default {
 ```
 
 **Custom Variant (index.css)**:
+
 ```css
 @custom-variant dark (&:where(.dark, .dark *));
 ```
@@ -499,12 +547,14 @@ export default {
 **Location**: `src/contexts/ThemeContext.tsx`
 
 **Features**:
+
 - Theme state management (light/dark/system)
 - localStorage persistence
 - System preference detection
 - Auto-applies `.dark` class to document root
 
 **Usage**:
+
 ```tsx
 import { useTheme } from './contexts/ThemeContext';
 
@@ -526,13 +576,13 @@ const { theme, setTheme, isDark } = useTheme();
 
 ### Color Pairs for Light/Dark
 
-| Element | Light Mode | Dark Mode |
-|---------|------------|-----------|
-| Page background | bg-white | bg-neutral-950 |
-| Card background | bg-gray-50 | bg-neutral-900 |
-| Heading text | text-gray-900 | text-white |
-| Body text | text-gray-600 | text-gray-300 |
-| Borders | border-gray-200 | border-gray-700 |
+| Element         | Light Mode      | Dark Mode       |
+|-----------------|-----------------|-----------------|
+| Page background | bg-white        | bg-neutral-950  |
+| Card background | bg-gray-50      | bg-neutral-900  |
+| Heading text    | text-gray-900   | text-white      |
+| Body text       | text-gray-600   | text-gray-300   |
+| Borders         | border-gray-200 | border-gray-700 |
 
 ---
 
@@ -543,6 +593,7 @@ const { theme, setTheme, isDark } = useTheme();
 **Location**: `src/data/portfolio.ts`
 
 **Structure**:
+
 ```typescript
 {
   personalInfo: {
@@ -593,6 +644,7 @@ const { theme, setTheme, isDark } = useTheme();
 **Location**: `docs/manoj-resume.md`
 
 Full professional resume content in markdown format, includes:
+
 - Professional summary
 - Technical skills
 - Work experience (MetaruneLabs, Talpha Solutions, Maga Engineering)
@@ -629,6 +681,7 @@ yarn format:check
 ```
 
 ### Development Server
+
 ```bash
 yarn dev
 # Opens http://localhost:5173
@@ -637,12 +690,14 @@ yarn dev
 ### Code Quality
 
 **ESLint**:
+
 - TypeScript ESLint rules
 - React hooks rules
 - React refresh rules
 - Prettier integration
 
 **Prettier**:
+
 - Consistent code formatting
 - Integrated with ESLint
 - Auto-format on save (if configured)
@@ -653,6 +708,7 @@ Current branch: `development`
 Main branch: `main`
 
 **Modified files** (current state):
+
 - docs/DESIGN_SYSTEM.md
 - package.json
 - src/App.css
@@ -664,6 +720,7 @@ Main branch: `main`
 - yarn.lock
 
 **New files**:
+
 - Documentation files in docs/
 - Component files in src/components/
 - Page files in src/pages/
@@ -677,12 +734,14 @@ Main branch: `main`
 ### Build Configuration
 
 **Vite Config** (`vite.config.ts`):
+
 - React plugin with fast refresh
 - TypeScript support
 - PostCSS processing
 - Asset optimization
 
 **TypeScript**:
+
 - Strict mode enabled
 - Separate configs for app and Node
 - Type checking on build
@@ -694,6 +753,7 @@ yarn build
 ```
 
 Outputs to `dist/` directory:
+
 - Minified JavaScript bundles
 - Optimized CSS
 - Static assets
@@ -710,6 +770,7 @@ Outputs to `dist/` directory:
 ### Deployment Targets
 
 Can be deployed to:
+
 - **Vercel**: Recommended for React + Vite
 - **Netlify**: Simple static hosting
 - **GitHub Pages**: Free static hosting
@@ -719,12 +780,14 @@ Can be deployed to:
 ### Environment Variables
 
 Create `.env` file for environment-specific configs:
+
 ```
 VITE_API_URL=https://api.example.com
 VITE_CONTACT_EMAIL=contact@example.com
 ```
 
 Access in code:
+
 ```typescript
 const apiUrl = import.meta.env.VITE_API_URL
 ```
@@ -758,17 +821,19 @@ const apiUrl = import.meta.env.VITE_API_URL
    ```
 
 4. **Minimal config file**:
-   - Only content paths and plugins needed
-   - Theme customization moves to CSS
+    - Only content paths and plugins needed
+    - Theme customization moves to CSS
 
 ### Font Loading
 
 Fonts loaded via Google Fonts CDN in `index.html`:
+
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
 ```
 
 Performance optimizations:
+
 - preconnect for DNS resolution
 - display=swap for font loading
 - Combined font request
@@ -778,6 +843,7 @@ Performance optimizations:
 Using React Router v7 with data router pattern:
 
 **Router Setup** (`src/router/index.tsx`):
+
 ```tsx
 import { createBrowserRouter } from 'react-router-dom'
 
@@ -797,6 +863,7 @@ const router = createBrowserRouter([
 ### Type Safety
 
 **Type Definitions** (`src/types/index.ts`):
+
 ```typescript
 export interface Project {
   title: string
@@ -818,6 +885,7 @@ export interface Skill {
 ## Performance Best Practices
 
 ### Implemented
+
 - Mobile-first responsive design
 - Lazy loading for images (to be added)
 - Code splitting via React Router
@@ -825,6 +893,7 @@ export interface Skill {
 - CSS purging via Tailwind
 
 ### Recommended Additions
+
 - Image optimization (WebP format)
 - Lazy load components below fold
 - Service worker for offline support
@@ -836,6 +905,7 @@ export interface Skill {
 ## Accessibility Features
 
 ### Implemented
+
 - Semantic HTML5 elements
 - Keyboard navigation support
 - ARIA labels on interactive elements
@@ -844,6 +914,7 @@ export interface Skill {
 - Responsive font sizes
 
 ### To Implement
+
 - Skip to main content link
 - Screen reader announcements
 - Reduced motion support
@@ -855,12 +926,14 @@ export interface Skill {
 ## Browser Support
 
 ### Target Browsers
+
 - Chrome (last 2 versions)
 - Firefox (last 2 versions)
 - Safari (last 2 versions)
 - Edge (last 2 versions)
 
 ### Modern Features Used
+
 - CSS Grid
 - CSS Flexbox
 - CSS Custom Properties
@@ -872,6 +945,7 @@ export interface Skill {
 ## Future Enhancements
 
 ### Phase 1 - Polish
+
 - [ ] Complete all page content
 - [ ] Optimize images
 - [ ] Add loading states
@@ -879,6 +953,7 @@ export interface Skill {
 - [ ] Add animations and transitions
 
 ### Phase 2 - Features
+
 - [ ] Blog section
 - [ ] Testimonials
 - [ ] Light mode theme
@@ -886,6 +961,7 @@ export interface Skill {
 - [ ] Analytics integration
 
 ### Phase 3 - Advanced
+
 - [ ] CMS integration
 - [ ] Multi-language support
 - [ ] A/B testing
@@ -899,6 +975,7 @@ export interface Skill {
 ### Most Common Classes
 
 **Backgrounds**:
+
 ```
 bg-neutral-950  // Page background (dark)
 bg-neutral-900  // Section background
@@ -908,6 +985,7 @@ bg-accent       // Accent elements
 ```
 
 **Text**:
+
 ```
 text-white          // Primary text
 text-neutral-400    // Secondary text
@@ -916,6 +994,7 @@ text-accent         // Highlights
 ```
 
 **Spacing**:
+
 ```
 px-4 sm:px-6 lg:px-8    // Horizontal padding
 py-12 md:py-16 lg:py-20 // Vertical padding
@@ -924,6 +1003,7 @@ gap-6                   // Grid/flex gap
 ```
 
 **Layout**:
+
 ```
 flex flex-col md:flex-row    // Responsive flex direction
 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  // Responsive grid
@@ -935,6 +1015,7 @@ max-w-7xl mx-auto           // Centered max-width container
 ## Support & Resources
 
 ### Documentation Links
+
 - [React Documentation](https://react.dev)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
 - [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
@@ -942,18 +1023,20 @@ max-w-7xl mx-auto           // Centered max-width container
 - [React Router Documentation](https://reactrouter.com)
 
 ### Project Documentation
-- [Design System](./DESIGN_SYSTEM.md)
-- [Dark Mode Setup](./DARK_MODE_SETUP.md)
-- [Home Page Design](./HOME_PAGE_DESIGN.md)
+
+- [Design System](design/DESIGN_SYSTEM.mdEM.md)
+- [Dark Mode Setup](design/DARK_MODE_SETUP.mdUP.md)
+- [Home Page Design](design/HOME_PAGE_DESIGN.mdGN.md)
 - [Portfolio Structure](./PORTFOLIO_STRUCTURE.md)
-- [Responsive Design Guide](./RESPONSIVE_DESIGN_GUIDE.md)
-- [Using Custom Colors](./USING_CUSTOM_COLORS.md)
+- [Responsive Design Guide](design/RESPONSIVE_DESIGN_GUIDE.mdDE.md)
+- [Using Custom Colors](design/USING_CUSTOM_COLORS.mdRS.md)
 
 ---
 
 ## Changelog
 
 ### Version 0.0.0 - Initial Setup
+
 - Project scaffolding with Vite + React + TypeScript
 - Tailwind CSS v4 configuration
 - Dark mode implementation
