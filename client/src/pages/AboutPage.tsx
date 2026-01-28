@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import Container from '../components/common/Container';
 import portfolioData from '../data/portfolio';
+import Interactive3DWave from '../components/common/Interactive3DWave.tsx';
 
 const AboutPage = () => {
   const { about, experience, skills, education } = portfolioData;
+
+  // Scroll to top instantly when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   // Personal interests (you can customize these)
   const interests = [
@@ -31,6 +38,7 @@ const AboutPage = () => {
   return (
     <div className="relative min-h-screen text-neutral-200">
       {/* Dark overlay for better text readability */}
+      {<Interactive3DWave />}
       <div className="absolute inset-0 bg-black/50 z-0" />
 
       {/* Content - positioned above background */}
