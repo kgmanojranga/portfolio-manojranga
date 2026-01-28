@@ -244,7 +244,7 @@
         background: var(--color-neutral-950);
         padding: 12px 16px;
         border: 2px solid var(--color-neutral-700);
-        border-radius: 8px;
+        border-radius: 16px;
         color: var(--color-neutral-400);
         font-size: 12px;
         font-weight: 600;
@@ -254,14 +254,14 @@
 
     .general-button:hover {
         scale: 1.05;
-        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+        box-shadow: 0 0 5px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
     }
 
     /* Primary button with gradient border and text */
     .primary-button {
         position: relative;
         padding: 12px 16px;
-        border-radius: 8px;
+        border-radius: 16px;
         font-weight: 600;
         border: 2px solid transparent;
         background-image: linear-gradient(#0a0a0a, #0a0a0a), linear-gradient(135deg, #DC8AF5, #F58AD8);
@@ -292,7 +292,7 @@
 
     .primary-button:hover {
         transform: scale(1.05);
-        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+        box-shadow: 0 4px 10px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
     }
 
     .primary-button:hover::before {
@@ -303,7 +303,7 @@
         background: var(--color-neutral-950);
         padding: 12px 16px;
         border: 2px solid var(--color-wave-blue);
-        border-radius: 8px;
+        border-radius: 16px;
         color: var(--color-wave-blue);
         font-weight: 600;
         transition: all 0.3s ease;
@@ -313,23 +313,23 @@
 
     .secondary-button:hover {
         scale: 1.05;
-        box-shadow: 0 4px 20px rgba(220, 138, 245, 0.6), 0 0 30px rgba(220, 138, 245, 0.3);
+        box-shadow: 0 0 10px var(--color-wave-blue);
     }
 
     @media (min-width: 768px) {
         .primary-button {
             padding: 16px 20px;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .secondary-button {
             padding: 16px 20px;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .general-button {
             padding: 16px 20px;
-            font-size: 14px;
+            font-size: 12px;
         }
     }
 
