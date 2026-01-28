@@ -10,7 +10,10 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,css,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,css,json}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn lint && yarn format:check && yarn build",
+    "deploy:preview": "yarn predeploy && vercel",
+    "deploy:prod": "yarn predeploy && vercel --prod"
   },
   "dependencies": {
     "react": "^19.2.0",
