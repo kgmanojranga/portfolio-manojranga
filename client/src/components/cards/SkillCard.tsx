@@ -13,7 +13,9 @@ const SkillCard = ({ skill }: SkillCardProps) => {
       {skill.items && skill.items.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {skill.items.map((item) => (
-            <Badge key={item} variant="primary">{item}</Badge>
+            <Badge key={item} variant="primary">
+              {item}
+            </Badge>
           ))}
         </div>
       )}

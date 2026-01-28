@@ -47,7 +47,9 @@ const TypingCode = ({
   }, [code, typingSpeed, pauseDuration]);
 
   return (
-    <div className={`bg-white p-8 rounded-lg shadow-lg w-[500px] h-[400px] overflow-y-auto ${className}`}>
+    <div
+      className={`bg-white p-8 rounded-lg shadow-lg w-[500px] h-[400px] overflow-y-auto ${className}`}
+    >
       <pre className="font-mono text-sm text-neutral-950 m-0">
         <code>{displayedCode}</code>
         <span
