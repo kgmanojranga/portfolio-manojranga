@@ -1,6 +1,7 @@
 # Portfolio Design System & Architecture Guide
 
-> **Purpose:** This document serves as a comprehensive reference for creating new pages and components that match the existing design system. Use this guide to maintain consistency across the portfolio website.
+> **Purpose:** This document serves as a comprehensive reference for creating new pages and components that match the
+> existing design system. Use this guide to maintain consistency across the portfolio website.
 
 ---
 
@@ -95,21 +96,33 @@
 **Version:** v4.1.18 (Modern `@theme` directive support)
 
 **Configuration** (`/tailwind.config.js`):
+
 ```javascript
 {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  plugins: [],
-  darkMode: 'class',  // Dark mode via .dark class on <html>
+    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+        plugins
+:
+    [],
+        darkMode
+:
+    'class',  // Dark mode via .dark class on <html>
 }
 ```
 
 **PostCSS** (`/postcss.config.js`):
+
 ```javascript
 {
-  plugins: {
-    '@tailwindcss/postcss': {},
-    autoprefixer: {},
-  }
+    plugins: {
+        '@tailwindcss/postcss'
+    :
+        {
+        }
+    ,
+        autoprefixer: {
+        }
+    ,
+    }
 }
 ```
 
@@ -122,23 +135,36 @@ All colors are defined in `/src/index.css` using the `@theme` directive.
 ### Primary Brand Colors (Grayscale)
 
 ```css
---color-primary: #222222           /* Dark gray - headings, primary text */
---color-primary-hover: #000000     /* Pure black - hover state */
---color-secondary: #7b7b7b         /* Medium gray - secondary text, borders */
---color-secondary-hover: #5a5a5a   /* Darker gray - secondary hover */
---color-tertiary: #f8f8f8          /* Off-white - light backgrounds, cards */
---color-tertiary-hover: #efefef    /* Slightly darker off-white */
---color-white: #ffffff             /* Pure white */
+--color-primary: #222222 /* Dark gray - headings, primary text */
+--color-primary-hover: #000000 /* Pure black - hover state */
+--color-secondary: #7b7b7b /* Medium gray - secondary text, borders */
+--color-secondary-hover: #5a5a5a /* Darker gray - secondary hover */
+--color-tertiary: #f8f8f8 /* Off-white - light backgrounds, cards */
+--color-tertiary-hover: #efefef /* Slightly darker off-white */
+--color-white: #ffffff
+
+/* Pure white */
 ```
 
 ### Wave Colors (Purple-Pink-Blue Gradient Theme)
 
 ```css
---color-wave-primary: #dc8af5     /* Purple - main brand color, buttons */
---color-wave-secondary: #f58ad8   /* Magenta - CTAs, accents */
---color-wave-accent: #8ab3f5      /* Blue - links, highlights */
---color-wave-bg: #000000          /* Canvas black */
---color-wave-overlay: rgba(0, 0, 0, 0.2)
+--color-wave-primary: #dc8af5 /* Purple - main brand color, buttons */
+--color-wave-secondary: #f58ad8 /* Magenta - CTAs, accents */
+--color-wave-accent: #8ab3f5 /* Blue - links, highlights */
+--color-wave-bg: #000000 /* Canvas black */
+--color-wave-overlay:
+
+rgba
+(
+0
+,
+0
+,
+0
+,
+0.2
+)
 ```
 
 ### Extended Wave Spectrum
@@ -175,18 +201,31 @@ All colors are defined in `/src/index.css` using the `@theme` directive.
 <!-- Dark mode -->
 <div className="dark:bg-neutral-950 dark:text-neutral-300">
 
-<!-- Light mode -->
-<div className="bg-white text-neutral-950">
+    <!-- Light mode -->
+    <div className="bg-white text-neutral-950">
 
-<!-- Gradient text -->
-<h1 className="text-gradient">
+        <!-- Gradient text -->
+        <h1 className="text-gradient">
 ```
 
 The `text-gradient` class applies:
+
 ```css
-background: linear-gradient(135deg, #dc8af5, #f58ad8, #8ab3f5);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+background:
+
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8, #8ab3f5
+
+)
+;
+-webkit-background-clip: text
+
+;
+-webkit-text-fill-color: transparent
+
+;
 ```
 
 ---
@@ -196,46 +235,64 @@ background: linear-gradient(135deg, #dc8af5, #f58ad8, #8ab3f5);
 ### Font Families
 
 ```css
---font-family-sans: 'Inter', system-ui, sans-serif          /* Body text */
---font-family-mono: 'IBM Plex Mono', monospace              /* Code, technical */
---font-monoton: 'Monoton', sans-serif                       /* Display */
---font-aeonik: 'Aeonik', sans-serif                         /* Premium headlines */
+--font-family-sans:
+
+'Inter'
+,
+system-ui, sans-serif /* Body text */
+--font-family-mono:
+
+'IBM Plex Mono'
+,
+monospace /* Code, technical */
+--font-monoton:
+
+'Monoton'
+,
+sans-serif /* Display */
+--font-aeonik:
+
+'Aeonik'
+,
+sans-serif
+
+/* Premium headlines */
 ```
 
 ### Custom Font Loading (Aeonik)
 
 ```css
 @font-face {
-  font-family: 'Aeonik';
-  src: url('./assets/fonts/aeonik/AeonikTRIAL-Light.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Light.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Aeonik';
-  src: url('./assets/fonts/aeonik/AeonikTRIAL-Regular.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Regular.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Aeonik';
-  src: url('./assets/fonts/aeonik/AeonikTRIAL-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
 }
 ```
 
 ### Typography Scale & Patterns
 
-| Element | Usage | Example Classes |
-|---------|-------|-----------------|
-| **Hero H1** | Large brand text | `font-aeonik text-[68px] sm:text-[96px] md:text-[128px] tracking-[-0.05em]` |
-| **H2 Subtitle** | Medium headings | `font-aeonik text-[30px] sm:text-[36px] md:text-[48px] tracking-[-0.05em]` |
-| **Section Headers** | Page headings | `text-3xl md:text-4xl font-bold text-white` |
-| **Body Text** | Default content | `text-neutral-300 text-[14px] leading-relaxed` |
-| **Small Text** | Labels, captions | `text-xs text-neutral-400` |
+| Element             | Usage            | Example Classes                                                             |
+|---------------------|------------------|-----------------------------------------------------------------------------|
+| **Hero H1**         | Large brand text | `font-aeonik text-[68px] sm:text-[96px] md:text-[128px] tracking-[-0.05em]` |
+| **H2 Subtitle**     | Medium headings  | `font-aeonik text-[30px] sm:text-[36px] md:text-[48px] tracking-[-0.05em]`  |
+| **Section Headers** | Page headings    | `text-3xl md:text-4xl font-bold text-white`                                 |
+| **Body Text**       | Default content  | `text-neutral-300 text-[14px] leading-relaxed`                              |
+| **Small Text**      | Labels, captions | `text-xs text-neutral-400`                                                  |
 
 ---
 
@@ -247,18 +304,20 @@ background: linear-gradient(135deg, #dc8af5, #f58ad8, #8ab3f5);
 
 ```typescript
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  children: React.ReactNode;
+    variant?: 'primary' | 'secondary' | 'outline';
+    size?: 'sm' | 'md' | 'lg';
+    children: React.ReactNode;
 }
 ```
 
 **Variants:**
+
 - `primary`: Blue background with hover
 - `secondary`: Gray background with hover
 - `outline`: Border-only style
 
 **Sizes:**
+
 - `sm`: `px-4 py-2 text-sm`
 - `md`: `px-6 py-3 text-base`
 - `lg`: `px-8 py-4 text-lg`
@@ -269,37 +328,38 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 ```css
 .primary-button {
-  position: relative;
-  padding: 12px 16px;              /* md: 16px 20px */
-  border-radius: 16px;
-  font-weight: 600;
-  border: 2px solid transparent;
-  background-image: linear-gradient(#0a0a0a, #0a0a0a),
-                    linear-gradient(135deg, #dc8af5, #f58ad8);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  box-shadow: 0 4px 15px rgba(220, 138, 245, 0.4),
-              0 0 20px rgba(220, 138, 245, 0.2);
-  font-size: 12px;
+    position: relative;
+    padding: 12px 16px; /* md: 16px 20px */
+    border-radius: 16px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#0a0a0a, #0a0a0a),
+    linear-gradient(135deg, #dc8af5, #f58ad8);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 4px 15px rgba(220, 138, 245, 0.4),
+    0 0 20px rgba(220, 138, 245, 0.2);
+    font-size: 12px;
 }
 
 .primary-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(220, 138, 245, 0.6),
-              0 0 30px rgba(220, 138, 245, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(220, 138, 245, 0.6),
+    0 0 30px rgba(220, 138, 245, 0.3);
 }
 
 .primary-button-text {
-  background: linear-gradient(135deg, #dc8af5, #f58ad8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #dc8af5, #f58ad8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 ```
 
 **Usage:**
+
 ```html
 <a href="#projects" className="primary-button">
-  <span className="primary-button-text">View Projects</span>
+    <span className="primary-button-text">View Projects</span>
 </a>
 ```
 
@@ -307,17 +367,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 ```css
 .secondary-button {
-  background: var(--color-neutral-950);
-  padding: 12px 16px;
-  border: 2px solid var(--color-wave-blue);
-  border-radius: 16px;
-  color: var(--color-wave-blue);
-  font-weight: 600;
+    background: var(--color-neutral-950);
+    padding: 12px 16px;
+    border: 2px solid var(--color-wave-blue);
+    border-radius: 16px;
+    color: var(--color-wave-blue);
+    font-weight: 600;
 }
 
 .secondary-button:hover {
-  scale: 1.05;
-  box-shadow: 0 0 10px var(--color-wave-blue);
+    scale: 1.05;
+    box-shadow: 0 0 10px var(--color-wave-blue);
 }
 ```
 
@@ -325,17 +385,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 ```css
 .general-button {
-  background: var(--color-neutral-950);
-  padding: 12px 16px;
-  border: 2px solid var(--color-neutral-700);
-  border-radius: 16px;
-  color: var(--color-neutral-400);
-  font-size: 12px;
+    background: var(--color-neutral-950);
+    padding: 12px 16px;
+    border: 2px solid var(--color-neutral-700);
+    border-radius: 16px;
+    color: var(--color-neutral-400);
+    font-size: 12px;
 }
 
 .general-button:hover {
-  scale: 1.05;
-  box-shadow: 0 0 5px rgba(220, 138, 245, 0.6);
+    scale: 1.05;
+    box-shadow: 0 0 5px rgba(220, 138, 245, 0.6);
 }
 ```
 
@@ -345,14 +405,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 ```typescript
 interface BadgeProps {
-  children: ReactNode;
-  variant?: 'default' | 'primary' | 'success' | 'warning';
+    children: ReactNode;
+    variant?: 'default' | 'primary' | 'success' | 'warning';
 }
 ```
 
 **Base Classes:** `inline-block px-3 py-1 text-sm font-medium rounded-full`
 
 **Variants:**
+
 - `default`: `bg-gray-100 text-gray-800`
 - `primary`: `bg-blue-100 text-blue-800`
 - `success`: `bg-green-100 text-green-800`
@@ -364,20 +425,21 @@ interface BadgeProps {
 
 ```typescript
 interface ContainerProps {
-  children: ReactNode;
-  className?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+    children: ReactNode;
+    className?: string;
+    size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 ```
 
 **Max-widths:**
+
 ```typescript
 const maxWidths = {
-  sm: '768px',    // ~max-w-3xl
-  md: '896px',    // ~max-w-4xl
-  lg: '1024px',   // ~max-w-5xl
-  xl: '1280px',   // ~max-w-7xl (default)
-  full: '100%',
+    sm: '768px',    // ~max-w-3xl
+    md: '896px',    // ~max-w-4xl
+    lg: '1024px',   // ~max-w-5xl
+    xl: '1280px',   // ~max-w-7xl (default)
+    full: '100%',
 };
 ```
 
@@ -391,12 +453,13 @@ const maxWidths = {
 
 ```typescript
 interface ProjectCardProps {
-  project: Project;
-  compact?: boolean;  // Shows fewer tech tags (3 vs 5)
+    project: Project;
+    compact?: boolean;  // Shows fewer tech tags (3 vs 5)
 }
 ```
 
 **Features:**
+
 - White background with shadow on hover
 - Optional image area (`h-48`)
 - Title, role, period, description
@@ -410,11 +473,12 @@ interface ProjectCardProps {
 
 ```typescript
 interface SkillCardProps {
-  skill: Skill;
+    skill: Skill;
 }
 ```
 
 **Features:**
+
 - White background with shadow
 - Category name as heading
 - Items displayed as badges
@@ -434,29 +498,34 @@ lg: 1024px  /* Desktop */
 ### Mobile-First Patterns
 
 **Navbar:**
+
 - Mobile: Hamburger menu
 - `md+`: Full horizontal menu
 
 **Hero Section:**
+
 - Mobile: Centered text, different background image
 - `md+`: Left-aligned text, larger sizing
 
 **Layouts:**
+
 ```html
 <!-- Single to two columns -->
 <div className="grid md:grid-cols-2 gap-8">
 
-<!-- Single to three columns -->
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Single to three columns -->
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<!-- Project grid -->
-<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Project grid -->
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 ```
 
 **Spacing:**
+
 ```html
+
 <div className="gap-4 md:gap-8">
-<section className="py-8 md:py-12">
+    <section className="py-8 md:py-12">
 ```
 
 ---
@@ -468,26 +537,34 @@ lg: 1024px  /* Desktop */
 ```css
 /* Fade up entrance */
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Water flow (button shine) */
 @keyframes water-flow {
-  0% { left: -100%; }
-  100% { left: 100%; }
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 /* Shimmer effect */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 ```
 
@@ -495,18 +572,33 @@ lg: 1024px  /* Desktop */
 
 ```css
 .animate-fade-up {
-  animation: fade-up 1s ease-out forwards;
-  opacity: 0;
+    animation: fade-up 1s ease-out forwards;
+    opacity: 0;
 }
 
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-400 { animation-delay: 0.4s; }
-.animation-delay-600 { animation-delay: 0.6s; }
-.animation-delay-800 { animation-delay: 0.8s; }
-.animation-delay-1000 { animation-delay: 1s; }
+.animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+    animation-delay: 0.8s;
+}
+
+.animation-delay-1000 {
+    animation-delay: 1s;
+}
 ```
 
 **Usage:**
+
 ```html
 <h1 className="animate-fade-up">Hello!</h1>
 <h2 className="animate-fade-up animation-delay-200">I'm Manoj</h2>
@@ -517,21 +609,23 @@ lg: 1024px  /* Desktop */
 ```html
 <!-- Standard transitions -->
 <div className="transition-all duration-300">
-<a className="transition-colors duration-200">
+    <a className="transition-colors duration-200">
 
-<!-- Hover effects -->
-<img className="transition-transform duration-300 hover:scale-105">
-<div className="hover:border-wave-primary/30 transition-all">
+        <!-- Hover effects -->
+        <img className="transition-transform duration-300 hover:scale-105">
+        <div className="hover:border-wave-primary/30 transition-all">
 ```
 
 ### Special Animations
 
 **3D Wave** (`/components/common/Interactive3DWave.tsx`):
+
 - Canvas-based particle system (50x50 grid)
 - Mouse tracking with 250px influence radius
 - Continuous wave motion
 
 **Typing Animation** (`/components/common/TypingCodeAnimation.tsx`):
+
 - Character-by-character reveal
 - Props: `typingSpeed` (50ms), `pauseDuration` (2000ms)
 - Blinking cursor effect
@@ -561,8 +655,8 @@ import heroImage from '../../assets/images/hero-profile-image.png';
 ```html
 <!-- CSS background -->
 <div
-  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
 />
 ```
 
@@ -570,20 +664,23 @@ import heroImage from '../../assets/images/hero-profile-image.png';
 
 ```html
 <!-- Desktop only -->
-<div className="hidden md:block" style={{ backgroundImage: `url(${desktopImg})` }} />
+<div className="hidden md:block" style={{ backgroundImage: `url(${desktopImg})` }}/>
 
 <!-- Mobile only -->
-<div className="md:hidden" style={{ backgroundImage: `url(${mobileImg})` }} />
+<div className="md:hidden" style={{ backgroundImage: `url(${mobileImg})` }}/>
 ```
 
 ### Image Optimization
 
 **Preloading (in `index.html`):**
+
 ```html
-<link rel="preload" as="image" href="./src/assets/images/hero-profile-image.png"/>
+
+<link rel="preload" as="image" href="../../src/assets/images/hero-profile-image.png"/>
 ```
 
 **Common Classes:**
+
 ```html
 <!-- Hero backgrounds -->
 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -605,11 +702,11 @@ className="hover:scale-105 transition-transform duration-300"
 
 ```typescript
 export const ROUTES = {
-  HOME: '/',
-  ABOUT: '/about',
-  PROJECTS: '/projects',
-  CONTACT: '/contact',
-  RESUME: '/resume',
+    HOME: '/',
+    ABOUT: '/about',
+    PROJECTS: '/projects',
+    CONTACT: '/contact',
+    RESUME: '/resume',
 } as const;
 ```
 
@@ -622,6 +719,7 @@ export const ROUTES = {
 - Navbar and Footer persist across pages
 
 **Layout Structure:**
+
 ```
 <Layout>
   ├─ <Navbar /> (sticky, z-50)
@@ -641,18 +739,18 @@ export const ROUTES = {
 
 ```typescript
 const portfolioData: PortfolioData = {
-  about: {
-    name: string;
-    title: string;
-    tagline: string;
-    bio: string;
-    yearsOfExperience: { software: number; civil: number; };
-  },
-  skills: Skill[],
-  experience: Experience[],
-  projects: Project[],
-  education: Education[],
-  contact: Contact,
+    about: {
+        name: string;
+        title: string;
+        tagline: string;
+        bio: string;
+        yearsOfExperience: {software: number; civil: number;};
+    },
+    skills: Skill[],
+    experience: Experience[],
+    projects: Project[],
+    education: Education[],
+    contact: Contact,
 };
 ```
 
@@ -662,25 +760,25 @@ const portfolioData: PortfolioData = {
 
 ```typescript
 export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  role: string;
-  period: string;
-  technologies: string[];
-  achievements: string[];
-  image?: string;
-  githubUrl?: string;
-  liveUrl?: string;
-  featured?: boolean;
-  category: 'blockchain' | 'fullstack' | 'automation' | 'freelance';
+    id: string;
+    title: string;
+    description: string;
+    role: string;
+    period: string;
+    technologies: string[];
+    achievements: string[];
+    image?: string;
+    githubUrl?: string;
+    liveUrl?: string;
+    featured?: boolean;
+    category: 'blockchain' | 'fullstack' | 'automation' | 'freelance';
 }
 
 export interface Skill {
-  id: string;
-  name: string;
-  category: 'languages' | 'frontend' | 'backend' | 'blockchain' | 'ai' | 'devops' | 'database' | 'game';
-  items?: string[];
+    id: string;
+    name: string;
+    category: 'languages' | 'frontend' | 'backend' | 'blockchain' | 'ai' | 'devops' | 'database' | 'game';
+    items?: string[];
 }
 ```
 
@@ -689,6 +787,7 @@ export interface Skill {
 **Path:** `/services/contentServices.ts`
 
 **Available Methods:**
+
 - `getAll()` - Get all portfolio data
 - `getProjects()` - Get all projects
 - `getProjectById(id)` - Get single project
@@ -712,9 +811,9 @@ export interface Skill {
 type Theme = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  isDark: boolean;
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+    isDark: boolean;
 }
 ```
 
@@ -731,14 +830,14 @@ interface ThemeContextType {
 <!-- Background -->
 <div className="bg-white dark:bg-neutral-950">
 
-<!-- Text -->
-<p className="text-neutral-950 dark:text-white">
+    <!-- Text -->
+    <p className="text-neutral-950 dark:text-white">
 
-<!-- Borders -->
-<div className="border-neutral-200 dark:border-white/10">
+        <!-- Borders -->
+    <div className="border-neutral-200 dark:border-white/10">
 
-<!-- Hover states -->
-<button className="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+        <!-- Hover states -->
+        <button className="hover:bg-neutral-100 dark:hover:bg-neutral-800">
 ```
 
 ---
@@ -748,12 +847,18 @@ interface ThemeContextType {
 ### Global Variables
 
 ```css
---navbar-height: 50px;  /* Fixed navbar height */
+--navbar-height:
+
+50
+px
+
+; /* Fixed navbar height */
 ```
 
 ### Navbar Layout
 
 ```html
+
 <nav className="sticky top-0 z-50 h-16 shadow-md border-b-2 border-neutral-200 dark:border-white/10">
 ```
 
@@ -763,8 +868,8 @@ interface ThemeContextType {
 <!-- Standard sections -->
 <Container className="py-20">
 
-<!-- With navbar offset -->
-<div className="min-h-[calc(100vh-var(--navbar-height))]">
+    <!-- With navbar offset -->
+    <div className="min-h-[calc(100vh-var(--navbar-height))]">
 ```
 
 ### Grid Patterns
@@ -773,11 +878,11 @@ interface ThemeContextType {
 <!-- 2-column responsive -->
 <div className="grid md:grid-cols-2 gap-8">
 
-<!-- 3-column responsive -->
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- 3-column responsive -->
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<!-- 4-column project grid -->
-<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 4-column project grid -->
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 ```
 
 ---
@@ -787,31 +892,36 @@ interface ThemeContextType {
 ### Template: New Page
 
 ```typescript
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import Container from '../components/common/Container';
 
 const NewPage = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, []);
+    useEffect(() => {
+        window.scrollTo({top: 0});
+    }, []);
 
-  return (
-    <div className="relative min-h-screen text-neutral-200">
-      {/* Background */}
-      <div className="absolute inset-0 bg-black/50 -z-10" />
+    return (
+        <div className = "relative min-h-screen text-neutral-200" >
+            {/* Background */}
+            < div
+    className = "absolute inset-0 bg-black/50 -z-10" / >
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Container className="pt-20 pb-12">
-          <h1 className="text-gradient font-aeonik text-[56px] md:text-[72px] tracking-[-0.05em] leading-none mb-4 animate-fade-up">
-            Page Title
-          </h1>
+        {/* Content */}
+        < div
+    className = "relative z-10" >
+    <Container className = "pt-20 pb-12" >
+    <h1 className = "text-gradient font-aeonik text-[56px] md:text-[72px] tracking-[-0.05em] leading-none mb-4 animate-fade-up" >
+        Page
+    Title
+    < /h1>
 
-          {/* Your content here */}
-        </Container>
-      </div>
-    </div>
-  );
+    {/* Your content here */
+    }
+    </Container>
+    < /div>
+    < /div>
+)
+    ;
 };
 
 export default NewPage;
@@ -821,15 +931,15 @@ export default NewPage;
 
 ```typescript
 interface CustomCardProps {
-  // Define your props
+    // Define your props
 }
 
-const CustomCard = ({ }: CustomCardProps) => {
-  return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-wave-primary/30 transition-all duration-300 hover:scale-[1.02]">
-      {/* Card content */}
-    </div>
-  );
+const CustomCard = ({}: CustomCardProps) => {
+    return (
+        <div className = "bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-wave-primary/30 transition-all duration-300 hover:scale-[1.02]" >
+            {/* Card content */}
+            < /div>
+    );
 };
 
 export default CustomCard;
@@ -841,17 +951,17 @@ export default CustomCard;
 <!-- Glass card effect -->
 <div className="bg-white/5 backdrop-blur-sm border border-white/10">
 
-<!-- Gradient background -->
-<div className="bg-gradient-to-r from-wave-primary/10 to-wave-secondary/10">
+    <!-- Gradient background -->
+    <div className="bg-gradient-to-r from-wave-primary/10 to-wave-secondary/10">
 
-<!-- Hover card -->
-<div className="transition-all duration-300 hover:scale-[1.02] hover:border-wave-primary/30">
+        <!-- Hover card -->
+        <div className="transition-all duration-300 hover:scale-[1.02] hover:border-wave-primary/30">
 
-<!-- Text gradient -->
-<h1 className="text-gradient font-aeonik tracking-[-0.05em]">
+            <!-- Text gradient -->
+            <h1 className="text-gradient font-aeonik tracking-[-0.05em]">
 
-<!-- Responsive spacing -->
-<section className="py-8 md:py-12 lg:py-20">
+                <!-- Responsive spacing -->
+                <section className="py-8 md:py-12 lg:py-20">
 ```
 
 ---
@@ -887,48 +997,173 @@ export default CustomCard;
 
 ```css
 /* Primary Gradient */
-linear-gradient(135deg, #dc8af5, #f58ad8)
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8
+
+)
 
 /* Full Spectrum */
-linear-gradient(135deg, #dc8af5, #f58ad8, #8ab3f5)
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8, #8ab3f5
+
+)
 
 /* Accent Gradient */
-linear-gradient(135deg, #8ab3f5, #dc8af5)
+linear-gradient
+(
+135
+deg, #8ab3f5, #dc8af5
+
+)
 ```
 
 ### Shadow Patterns
 
 ```css
 /* Primary button glow */
-box-shadow: 0 4px 15px rgba(220, 138, 245, 0.4),
-            0 0 20px rgba(220, 138, 245, 0.2);
+box-shadow:
+
+0
+4
+px
+
+15
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.4
+)
+,
+0
+0
+20
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.2
+)
+;
 
 /* Hover glow */
-box-shadow: 0 0 5px rgba(220, 138, 245, 0.6),
-            0 0 30px rgba(220, 138, 245, 0.3);
+box-shadow:
+
+0
+0
+5
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.6
+)
+,
+0
+0
+30
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.3
+)
+;
 
 /* Text drop shadow */
-filter: drop-shadow(0 4px 8px rgba(220, 138, 245, 0.4))
-        drop-shadow(0 8px 16px rgba(139, 179, 245, 0.3));
+filter:
+
+drop-shadow
+(
+0
+4
+px
+
+8
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.4
+)
+)
+drop-shadow
+(
+0
+8
+px
+
+16
+px
+
+rgba
+(
+139
+,
+179
+,
+245
+,
+0.3
+)
+)
+;
 ```
 
 ### Common Color Combinations
 
-| Use Case | Classes |
-|----------|---------|
-| **Glass effect** | `bg-white/5 backdrop-blur-sm border border-white/10` |
-| **Card hover** | `hover:border-wave-primary/30 hover:shadow-lg` |
-| **Dark overlay** | `bg-black/50` or `bg-neutral-950/80` |
-| **Gradient text** | `text-gradient` (predefined class) |
-| **Primary accent** | `text-wave-primary` or `border-wave-primary` |
+| Use Case           | Classes                                              |
+|--------------------|------------------------------------------------------|
+| **Glass effect**   | `bg-white/5 backdrop-blur-sm border border-white/10` |
+| **Card hover**     | `hover:border-wave-primary/30 hover:shadow-lg`       |
+| **Dark overlay**   | `bg-black/50` or `bg-neutral-950/80`                 |
+| **Gradient text**  | `text-gradient` (predefined class)                   |
+| **Primary accent** | `text-wave-primary` or `border-wave-primary`         |
 
 ---
 
 ## Summary
 
-This design system follows a **dark, modern aesthetic** with purple-blue gradient accents, mobile-first responsive design, and smooth animations throughout. The color palette centers around the wave colors (`#dc8af5`, `#f58ad8`, `#8ab3f5`) with a neutral grayscale foundation.
+This design system follows a **dark, modern aesthetic** with purple-blue gradient accents, mobile-first responsive
+design, and smooth animations throughout. The color palette centers around the wave colors (`#dc8af5`, `#f58ad8`,
+`#8ab3f5`) with a neutral grayscale foundation.
 
 **Key principles:**
+
 - Mobile-first responsive design
 - Dark mode by default with light mode support
 - Smooth transitions and subtle animations
@@ -936,6 +1171,7 @@ This design system follows a **dark, modern aesthetic** with purple-blue gradien
 - Consistent spacing and typography scale
 
 When creating new components, always:
+
 1. Use the Container component for consistent max-width and padding
 2. Apply responsive classes (`md:`, `lg:`) for mobile-first design
 3. Use predefined button styles (`.primary-button`, `.secondary-button`)
