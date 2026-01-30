@@ -1,831 +1,1180 @@
-# Design System Documentation
+# Portfolio Design System & Architecture Guide
 
-This document outlines the complete design system implementation for Manoj Ranga's portfolio, including colors, typography, spacing, and theming approach.
-
-## Table of Contents
-- [Color System](#color-system)
-- [Typography](#typography)
-- [Dark Mode](#dark-mode)
-- [Implementation Details](#implementation-details)
-- [Usage Examples](#usage-examples)
-- [Best Practices](#best-practices)
+> **Purpose:** This document serves as a comprehensive reference for creating new pages and components that match the
+> existing design system. Use this guide to maintain consistency across the portfolio website.
 
 ---
 
-## Color System
+## Table of Contents
 
-### Overview
-The portfolio uses a **professional grayscale design** with a clean, minimalist aesthetic. Colors are implemented using Tailwind CSS v4's `@theme` directive, which automatically generates both utility classes and CSS custom properties.
+1. [Project Structure](#1-project-structure)
+2. [Styling System](#2-styling-system--tailwind-configuration)
+3. [Color Palette](#3-color-palette--css-variables)
+4. [Typography](#4-typography-system)
+5. [Component Library](#5-component-patterns--library)
+6. [Responsive Design](#6-responsive-design--breakpoints)
+7. [Animations](#7-animation--transitions)
+8. [Image Handling](#8-image-handling)
+9. [Routing](#9-routing-structure)
+10. [Data Management](#10-data-management)
+11. [Theme System](#11-theme-system)
+12. [Layout System](#12-layout--spacing-system)
+13. [Quick Start Templates](#13-creating-new-components---quick-reference)
+14. [Technical Notes](#14-important-technical-notes)
+15. [Design Patterns](#15-color-combinations-for-new-designs)
 
-### Color Palette
+---
 
-#### Brand Colors (Grayscale Scheme)
+## 1. Project Structure
 
-**Primary Color (Dark Gray)**
-Main brand color for text, headings, and primary actions:
+```
+/src
+  ├── assets/
+  │   ├── images/          # All image assets
+  │   │   ├── hero-profile-image.png        # Desktop hero background
+  │   │   ├── hero-profile-image-3.png      # Mobile hero background
+  │   │   ├── profile-image.png             # Profile images
+  │   │   └── about-bg.png                  # About section background
+  │   └── fonts/aeonik/    # Custom Aeonik font files
+  │       ├── AeonikTRIAL-Light.woff2      (weight 400)
+  │       ├── AeonikTRIAL-Regular.woff2    (weight 500)
+  │       └── AeonikTRIAL-Bold.woff        (weight 700)
+  │
+  ├── components/
+  │   ├── layout/          # Layout components
+  │   │   ├── Layout.tsx              # Main wrapper with Navbar/Footer
+  │   │   ├── Navbar.tsx              # Sticky navigation
+  │   │   └── Footer.tsx              # Footer with links
+  │   ├── sections/        # Page sections
+  │   │   ├── HeroSection.tsx         # Landing hero
+  │   │   └── AboutSection.tsx        # About preview
+  │   ├── cards/           # Card components
+  │   │   ├── ProjectCard.tsx         # Project display
+  │   │   └── SkillCard.tsx           # Skill categories
+  │   └── common/          # Reusable components
+  │       ├── Container.tsx           # Responsive wrapper
+  │       ├── Button.tsx              # Button variants
+  │       ├── Badge.tsx               # Tag/label
+  │       ├── Interactive3DWave.tsx   # Canvas animation
+  │       ├── TypingCodeAnimation.tsx # Typing effect
+  │       └── ThemeToggle.tsx         # Theme switcher
+  │
+  ├── pages/               # Route pages
+  │   ├── HomePage.tsx
+  │   ├── AboutPage.tsx
+  │   ├── ProjectsPage.tsx
+  │   ├── ContactPage.tsx
+  │   └── ResumePage.tsx
+  │
+  ├── contexts/            # React contexts
+  │   └── ThemeContext.tsx            # Theme management
+  │
+  ├── router/              # Routing setup
+  │   ├── index.tsx                   # React Router config
+  │   └── routes.ts                   # Route constants
+  │
+  ├── services/            # Data services
+  │   └── contentServices.ts          # API/data fetching
+  │
+  ├── types/               # TypeScript types
+  │   └── index.ts                    # Type definitions
+  │
+  ├── data/                # Static data
+  │   └── portfolio.ts                # Portfolio content
+  │
+  ├── App.tsx              # Root component
+  ├── index.css            # Global styles + Tailwind
+  └── main.tsx             # React entry point
+```
 
-| Variant | Hex Code | Usage |
-|---------|----------|-------|
-| primary (DEFAULT) | `#222222` | Primary text, headings, buttons, main UI elements |
-| primary-hover | `#000000` | Hover state (pure black) |
+---
 
-**Characteristics:**
-- Professional and clean
-- Excellent readability
-- High contrast on light backgrounds
-- Versatile for all UI elements
+## 2. Styling System & Tailwind Configuration
 
-**Secondary Color (Medium Gray)**
-Supporting color for secondary elements and borders:
+### Tailwind Setup
 
-| Variant | Hex Code | Usage |
-|---------|----------|-------|
-| secondary (DEFAULT) | `#7B7B7B` | Secondary text, borders, icons, metadata |
-| secondary-hover | `#5a5a5a` | Hover state (darker gray) |
+**Version:** v4.1.18 (Modern `@theme` directive support)
 
-**Characteristics:**
-- Creates visual hierarchy
-- Softer than primary
-- Perfect for less important content
-- Good for borders and dividers
+**Configuration** (`/tailwind.config.js`):
 
-**Tertiary Color (Off-White)**
-Light background color for cards and sections:
-
-| Variant | Hex Code | Usage |
-|---------|----------|-------|
-| tertiary (DEFAULT) | `#F8F8F8` | Card backgrounds, section backgrounds, subtle surfaces |
-| tertiary-hover | `#efefef` | Hover state (slightly darker) |
-
-**Characteristics:**
-- Subtle contrast with white
-- Comfortable for large areas
-- Creates depth without color
-- Maintains clean aesthetic
-
-**White**
-Pure white for main backgrounds:
-
-| Variant | Hex Code | Usage |
-|---------|----------|-------|
-| white (DEFAULT) | `#FFFFFF` | Main page background, pure white surfaces |
-
-#### Neutral Grays (Extended Palette)
-Additional grayscale shades for flexibility:
-
-| Shade | Hex Code | Usage |
-|-------|----------|-------|
-| neutral-50 | `#fafafa` | Lightest backgrounds |
-| neutral-100 | `#f5f5f5` | Very light surfaces |
-| neutral-200 | `#e5e5e5` | Light borders, dividers |
-| neutral-300 | `#d4d4d4` | Subtle borders |
-| neutral-400 | `#a3a3a3` | Placeholder text |
-| neutral-500 | `#737373` | Muted text |
-| neutral-600 | `#525252` | Secondary text |
-| neutral-700 | `#404040` | Dark text |
-| neutral-800 | `#262626` | Very dark backgrounds |
-| neutral-900 | `#171717` | Darkest backgrounds |
-| neutral-950 | `#0a0a0a` | Almost black |
-
-**Note**: These neutral shades provide additional options but the brand colors (primary, secondary, tertiary, white) should be used primarily for consistency.
-
-### Color Implementation (Tailwind v4)
-
-Colors are defined in `src/index.css` using the `@theme` directive:
-
-```css
-@theme {
-    /* Brand Colors - Grayscale Scheme */
-    --color-primary-*: initial;
-    --color-primary: #222222;        /* Dark gray */
-    --color-primary-hover: #000000;  /* Pure black */
-
-    --color-secondary-*: initial;
-    --color-secondary: #7B7B7B;      /* Medium gray */
-    --color-secondary-hover: #5a5a5a; /* Darker gray */
-
-    --color-tertiary-*: initial;
-    --color-tertiary: #F8F8F8;       /* Off-white */
-    --color-tertiary-hover: #efefef; /* Slightly darker */
-
-    --color-white-*: initial;
-    --color-white: #FFFFFF;          /* Pure white */
-
-    /* Neutral palette - extended grayscale */
-    --color-neutral-50: #fafafa;
-    --color-neutral-100: #f5f5f5;
-    /* ... more neutral shades ... */
+```javascript
+{
+    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+        plugins
+:
+    [],
+        darkMode
+:
+    'class',  // Dark mode via .dark class on <html>
 }
 ```
 
-**How it works:**
-- `@theme` directive automatically generates Tailwind utility classes (`bg-primary`, `text-secondary`, etc.)
-- Also creates CSS custom properties (`var(--color-primary)`, `var(--color-secondary)`)
-- The `--color-primary-*: initial` pattern enables `primary` to work as DEFAULT value
-- No need to extend theme in `tailwind.config.js` with v4
+**PostCSS** (`/postcss.config.js`):
+
+```javascript
+{
+    plugins: {
+        '@tailwindcss/postcss'
+    :
+        {
+        }
+    ,
+        autoprefixer: {
+        }
+    ,
+    }
+}
+```
 
 ---
 
-## Typography
+## 3. Color Palette & CSS Variables
+
+All colors are defined in `/src/index.css` using the `@theme` directive.
+
+### Primary Brand Colors (Grayscale)
+
+```css
+--color-primary: #222222 /* Dark gray - headings, primary text */
+--color-primary-hover: #000000 /* Pure black - hover state */
+--color-secondary: #7b7b7b /* Medium gray - secondary text, borders */
+--color-secondary-hover: #5a5a5a /* Darker gray - secondary hover */
+--color-tertiary: #f8f8f8 /* Off-white - light backgrounds, cards */
+--color-tertiary-hover: #efefef /* Slightly darker off-white */
+--color-white: #ffffff
+
+/* Pure white */
+```
+
+### Wave Colors (Purple-Pink-Blue Gradient Theme)
+
+```css
+--color-wave-primary: #dc8af5 /* Purple - main brand color, buttons */
+--color-wave-secondary: #f58ad8 /* Magenta - CTAs, accents */
+--color-wave-accent: #8ab3f5 /* Blue - links, highlights */
+--color-wave-bg: #000000 /* Canvas black */
+--color-wave-overlay:
+
+rgba
+(
+0
+,
+0
+,
+0
+,
+0.2
+)
+```
+
+### Extended Wave Spectrum
+
+```css
+--color-wave-blue: #8ab3f5
+--color-wave-periwinkle: #8a8af5
+--color-wave-lavender: #b38af5
+--color-wave-purple: #dc8af5
+--color-wave-magenta: #f58ad8
+--color-wave-pink: #f58aad
+--color-wave-rose: #f58a93
+```
+
+### Neutral Extended Palette
+
+```css
+--color-neutral-50: #fafafa
+--color-neutral-100: #f5f5f5
+--color-neutral-200: #e5e5e5
+--color-neutral-300: #d4d4d4
+--color-neutral-400: #a3a3a3
+--color-neutral-500: #737373
+--color-neutral-600: #525252
+--color-neutral-700: #404040
+--color-neutral-800: #262626
+--color-neutral-900: #171717
+--color-neutral-950: #050505
+```
+
+### Color Usage Patterns
+
+```html
+<!-- Dark mode -->
+<div className="dark:bg-neutral-950 dark:text-neutral-300">
+
+    <!-- Light mode -->
+    <div className="bg-white text-neutral-950">
+
+        <!-- Gradient text -->
+        <h1 className="text-gradient">
+```
+
+The `text-gradient` class applies:
+
+```css
+background:
+
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8, #8ab3f5
+
+)
+;
+-webkit-background-clip: text
+
+;
+-webkit-text-fill-color: transparent
+
+;
+```
+
+---
+
+## 4. Typography System
 
 ### Font Families
 
-#### Inter (Sans-serif) - Primary Font
-- **Purpose**: UI elements, body text, headings
-- **Weights**: 100, 200, 300, 400, 500, 600, 700, 800, 900
-- **Characteristics**: Modern, highly legible, optimized for screens
-- **Usage**: Default for all text unless specified otherwise
+```css
+--font-family-sans:
 
-#### IBM Plex Mono (Monospace) - Code Font
-- **Purpose**: Code blocks, technical content, monospaced text
-- **Weights**: 100, 200, 300, 400, 500, 600, 700
-- **Characteristics**: Clean, professional monospace design
-- **Usage**: Code snippets, technical details, terminal output
+'Inter'
+,
+system-ui, sans-serif /* Body text */
+--font-family-mono:
 
-### Font Loading
+'IBM Plex Mono'
+,
+monospace /* Code, technical */
+--font-monoton:
 
-Fonts are loaded via Google Fonts CDN in `index.html`:
+'Monoton'
+,
+sans-serif /* Display */
+--font-aeonik:
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+'Aeonik'
+,
+sans-serif
+
+/* Premium headlines */
 ```
 
-**Performance optimizations:**
-- `preconnect` for faster DNS resolution
-- `display=swap` for font loading strategy
-- Combined font request for reduced HTTP calls
-
-### Font Configuration (Tailwind v4)
-
-Fonts are defined in `src/index.css` using `@theme`:
+### Custom Font Loading (Aeonik)
 
 ```css
-@theme {
-    --font-family-sans: 'Inter', system-ui, sans-serif;
-    --font-family-mono: 'IBM Plex Mono', monospace;
+@font-face {
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Light.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Regular.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('./assets/fonts/aeonik/AeonikTRIAL-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
 }
 ```
 
-Applied as default in `@layer base`:
+### Typography Scale & Patterns
 
-```css
-@layer base {
-    :root {
-        font-family: 'Inter', system-ui, sans-serif;
-        line-height: 1;
-        font-weight: 400;
-
-        /* Rendering optimizations */
-        font-synthesis: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-}
-```
-
-### Typography Scale
-
-Use Tailwind's default typography scale for consistency:
-
-| Class | Font Size | Line Height | Usage |
-|-------|-----------|-------------|-------|
-| text-xs | 0.75rem (12px) | 1rem | Small labels, captions |
-| text-sm | 0.875rem (14px) | 1.25rem | Small text, metadata |
-| text-base | 1rem (16px) | 1.5rem | Body text (default) |
-| text-lg | 1.125rem (18px) | 1.75rem | Large body text |
-| text-xl | 1.25rem (20px) | 1.75rem | Small headings |
-| text-2xl | 1.5rem (24px) | 2rem | Section headings |
-| text-3xl | 1.875rem (30px) | 2.25rem | Page headings |
-| text-4xl | 2.25rem (36px) | 2.5rem | Hero headings |
-| text-5xl | 3rem (48px) | 1 | Large hero headings |
-| text-6xl | 3.75rem (60px) | 1 | Extra large headings |
+| Element             | Usage            | Example Classes                                                             |
+|---------------------|------------------|-----------------------------------------------------------------------------|
+| **Hero H1**         | Large brand text | `font-aeonik text-[68px] sm:text-[96px] md:text-[128px] tracking-[-0.05em]` |
+| **H2 Subtitle**     | Medium headings  | `font-aeonik text-[30px] sm:text-[36px] md:text-[48px] tracking-[-0.05em]`  |
+| **Section Headers** | Page headings    | `text-3xl md:text-4xl font-bold text-white`                                 |
+| **Body Text**       | Default content  | `text-neutral-300 text-[14px] leading-relaxed`                              |
+| **Small Text**      | Labels, captions | `text-xs text-neutral-400`                                                  |
 
 ---
 
-## Dark Mode
+## 5. Component Patterns & Library
 
-### Implementation Approach
+### A. Button Component
 
-The project uses **class-based dark mode** with a custom variant for Tailwind v4.
-
-#### Custom Dark Mode Variant
-
-Defined in `src/index.css`:
-
-```css
-@custom-variant dark (&:where(.dark, .dark *));
-```
-
-**How it works:**
-- When `.dark` class is added to an element, all children can use `dark:` variants
-- Provides more control than media query approach
-- Allows user preference toggle
-
-#### Tailwind Config
-
-In `tailwind.config.js`:
-
-```javascript
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
-  plugins: [],
-};
-```
-
-### Dark Mode Context
-
-Dark mode state is managed globally using React Context (see `src/contexts/ThemeContext.tsx`):
+**Path:** `/components/common/Button.tsx`
 
 ```typescript
-// Toggle dark mode
-const { isDark, toggleTheme } = useTheme();
-
-// Automatically applies .dark class to document root
-```
-
-### Using Dark Mode in Components
-
-```tsx
-// Background that changes based on theme
-<div className="bg-neutral-100 dark:bg-neutral-900">
-
-// Text that adapts to theme
-<p className="text-neutral-900 dark:text-neutral-100">
-
-// Border color
-<div className="border-neutral-200 dark:border-neutral-700">
-```
-
----
-
-## Implementation Details
-
-### Tailwind CSS v4 Setup
-
-#### 1. Installation
-
-```bash
-yarn add -D tailwindcss @tailwindcss/postcss autoprefixer
-```
-
-#### 2. PostCSS Configuration
-
-`postcss.config.js`:
-
-```javascript
-export default {
-  plugins: {
-    '@tailwindcss/postcss': {},
-    autoprefixer: {},
-  },
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: 'primary' | 'secondary' | 'outline';
+    size?: 'sm' | 'md' | 'lg';
+    children: React.ReactNode;
 }
 ```
 
-#### 3. Import Tailwind in CSS
+**Variants:**
 
-`src/index.css`:
+- `primary`: Blue background with hover
+- `secondary`: Gray background with hover
+- `outline`: Border-only style
+
+**Sizes:**
+
+- `sm`: `px-4 py-2 text-sm`
+- `md`: `px-6 py-3 text-base`
+- `lg`: `px-8 py-4 text-lg`
+
+### B. Custom Button Styles (CSS Utilities)
+
+#### Primary Button (Gradient Border)
 
 ```css
-@import "../../node_modules/tailwindcss";
+.primary-button {
+    position: relative;
+    padding: 12px 16px; /* md: 16px 20px */
+    border-radius: 16px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#0a0a0a, #0a0a0a),
+    linear-gradient(135deg, #dc8af5, #f58ad8);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 4px 15px rgba(220, 138, 245, 0.4),
+    0 0 20px rgba(220, 138, 245, 0.2);
+    font-size: 12px;
+}
+
+.primary-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(220, 138, 245, 0.6),
+    0 0 30px rgba(220, 138, 245, 0.3);
+}
+
+.primary-button-text {
+    background: linear-gradient(135deg, #dc8af5, #f58ad8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 ```
 
-**Note**: Tailwind v4 uses a single `@import` instead of the v3 directives:
-- ~~`@tailwind base`~~ (v3) → Part of `@import "tailwindcss"` (v4)
-- ~~`@tailwind components`~~ (v3) → Part of `@import "tailwindcss"` (v4)
-- ~~`@tailwind utilities`~~ (v4) → Part of `@import "tailwindcss"` (v4)
+**Usage:**
 
-#### 4. Minimal Tailwind Config
+```html
+<a href="#projects" className="primary-button">
+    <span className="primary-button-text">View Projects</span>
+</a>
+```
 
-In Tailwind v4, most theme configuration moves to CSS using `@theme`:
+#### Secondary Button
 
-```javascript
-// tailwind.config.js (minimal)
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
-  plugins: [],
+```css
+.secondary-button {
+    background: var(--color-neutral-950);
+    padding: 12px 16px;
+    border: 2px solid var(--color-wave-blue);
+    border-radius: 16px;
+    color: var(--color-wave-blue);
+    font-weight: 600;
+}
+
+.secondary-button:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px var(--color-wave-blue);
+}
+```
+
+#### General Button
+
+```css
+.general-button {
+    background: var(--color-neutral-950);
+    padding: 12px 16px;
+    border: 2px solid var(--color-neutral-700);
+    border-radius: 16px;
+    color: var(--color-neutral-400);
+    font-size: 12px;
+}
+
+.general-button:hover {
+    scale: 1.05;
+    box-shadow: 0 0 5px rgba(220, 138, 245, 0.6);
+}
+```
+
+### C. Badge Component
+
+**Path:** `/components/common/Badge.tsx`
+
+```typescript
+interface BadgeProps {
+    children: ReactNode;
+    variant?: 'default' | 'primary' | 'success' | 'warning';
+}
+```
+
+**Base Classes:** `inline-block px-3 py-1 text-sm font-medium rounded-full`
+
+**Variants:**
+
+- `default`: `bg-gray-100 text-gray-800`
+- `primary`: `bg-blue-100 text-blue-800`
+- `success`: `bg-green-100 text-green-800`
+- `warning`: `bg-yellow-100 text-yellow-800`
+
+### D. Container Component
+
+**Path:** `/components/common/Container.tsx`
+
+```typescript
+interface ContainerProps {
+    children: ReactNode;
+    className?: string;
+    size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+}
+```
+
+**Max-widths:**
+
+```typescript
+const maxWidths = {
+    sm: '768px',    // ~max-w-3xl
+    md: '896px',    // ~max-w-4xl
+    lg: '1024px',   // ~max-w-5xl
+    xl: '1280px',   // ~max-w-7xl (default)
+    full: '100%',
 };
 ```
 
-### Complete CSS Setup
+**Default Padding:** `px-4 sm:px-6 lg:px-8`
 
-`src/index.css` structure:
+### E. Card Components
 
-```css
-/* 1. Import Tailwind */
-@import "tailwindcss";
+#### ProjectCard
 
-/* 2. Define custom dark mode variant */
-@custom-variant dark (&:where(.dark, .dark *));
+**Path:** `/components/cards/ProjectCard.tsx`
 
-/* 3. Define theme (colors, fonts, etc.) */
-@theme {
-    /* Colors */
-    --color-neutral-950: #030712;
-    /* ... more colors ... */
-
-    /* Fonts */
-    --font-family-sans: 'Inter', system-ui, sans-serif;
-    --font-family-mono: 'IBM Plex Mono', monospace;
+```typescript
+interface ProjectCardProps {
+    project: Project;
+    compact?: boolean;  // Shows fewer tech tags (3 vs 5)
 }
+```
 
-/* 4. Base styles */
-@layer base {
-    :root {
-        font-family: 'Inter', system-ui, sans-serif;
-        /* ... root styles ... */
-    }
+**Features:**
 
-    body {
-        margin: 0;
-        min-width: 320px;
-        min-height: 100vh;
-    }
+- White background with shadow on hover
+- Optional image area (`h-48`)
+- Title, role, period, description
+- Technology badges
+- Key achievements list (first 3)
+- GitHub and Live Demo links
 
-    /* Global element styles */
-    h1 { color: var(--color-primary); }
-    a { color: var(--color-primary); }
-    a:hover { color: var(--color-accent); }
+#### SkillCard
+
+**Path:** `/components/cards/SkillCard.tsx`
+
+```typescript
+interface SkillCardProps {
+    skill: Skill;
 }
+```
+
+**Features:**
+
+- White background with shadow
+- Category name as heading
+- Items displayed as badges
+
+---
+
+## 6. Responsive Design & Breakpoints
+
+### Tailwind Breakpoints
+
+```
+sm: 640px   /* Mobile landscape */
+md: 768px   /* Tablet */
+lg: 1024px  /* Desktop */
+```
+
+### Mobile-First Patterns
+
+**Navbar:**
+
+- Mobile: Hamburger menu
+- `md+`: Full horizontal menu
+
+**Hero Section:**
+
+- Mobile: Centered text, different background image
+- `md+`: Left-aligned text, larger sizing
+
+**Layouts:**
+
+```html
+<!-- Single to two columns -->
+<div className="grid md:grid-cols-2 gap-8">
+
+    <!-- Single to three columns -->
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Project grid -->
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+```
+
+**Spacing:**
+
+```html
+
+<div className="gap-4 md:gap-8">
+    <section className="py-8 md:py-12">
 ```
 
 ---
 
-## Usage Examples
+## 7. Animation & Transitions
 
-### Color Utility Classes
-
-#### Backgrounds
-
-```tsx
-// Main backgrounds
-<div className="bg-white">Main page background</div>
-<div className="bg-tertiary">Card/section background</div>
-
-// Brand color backgrounds
-<button className="bg-primary hover:bg-primary-hover text-white">Primary button</button>
-<button className="bg-secondary hover:bg-secondary-hover text-white">Secondary button</button>
-
-// Neutral backgrounds for variety
-<div className="bg-neutral-50">Very light background</div>
-<div className="bg-neutral-100">Light background</div>
-```
-
-#### Text Colors
-
-```tsx
-// Primary text
-<h1 className="text-primary">Main heading</h1>
-<p className="text-primary">Primary body text</p>
-
-// Secondary text
-<p className="text-secondary">Secondary text, captions, metadata</p>
-<span className="text-secondary">Muted information</span>
-
-// Links and interactive text
-<a className="text-primary hover:text-primary-hover">Link text</a>
-<button className="text-primary hover:text-secondary">Text button</button>
-
-// Using opacity for hierarchy
-<p className="text-primary/80">Slightly muted primary text</p>
-<p className="text-secondary/60">Very muted secondary text</p>
-```
-
-#### Borders
-
-```tsx
-<div className="border border-secondary">Standard border</div>
-<div className="border-2 border-primary">Emphasized border</div>
-<div className="border-b border-neutral-200">Subtle divider</div>
-<div className="divide-y divide-secondary">Divided sections</div>
-```
-
-### Typography Examples
-
-```tsx
-// Font families
-<div className="font-sans">Default UI text (Inter)</div>
-<code className="font-mono">Code snippet (IBM Plex Mono)</code>
-
-// Font weights
-<h1 className="font-bold">Bold heading</h1>
-<p className="font-medium">Medium body text</p>
-<span className="font-light">Light text</span>
-
-// Font sizes
-<h1 className="text-5xl font-bold">Hero heading</h1>
-<h2 className="text-3xl font-semibold">Section heading</h2>
-<p className="text-base">Body paragraph</p>
-<small className="text-sm text-neutral-400">Caption text</small>
-```
-
-### Complete Component Examples
-
-#### Hero Section
-
-```tsx
-<section className="bg-white min-h-screen flex items-center justify-center">
-  <div className="max-w-4xl mx-auto px-6 text-center">
-    <h1 className="text-6xl font-bold text-primary mb-4">
-      MANOJ RANGA
-    </h1>
-    <p className="text-2xl text-secondary mb-6">
-      Full-Stack Developer | Blockchain Engineer
-    </p>
-    <p className="text-lg text-secondary/80 mb-8">
-      Building scalable applications with React, TypeScript, and blockchain technologies
-    </p>
-    <div className="flex gap-4 justify-center">
-      <button className="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-lg font-medium transition">
-        View Projects
-      </button>
-      <button className="bg-tertiary hover:bg-tertiary-hover text-primary px-8 py-3 rounded-lg font-medium transition border border-secondary">
-        Get In Touch
-      </button>
-    </div>
-  </div>
-</section>
-```
-
-#### Project Card
-
-```tsx
-<div className="bg-tertiary rounded-lg overflow-hidden hover:shadow-lg transition group border border-secondary/20">
-  <div className="aspect-video bg-neutral-100">
-    {/* Project thumbnail */}
-  </div>
-  <div className="p-6">
-    <h3 className="text-2xl font-bold text-primary mb-2 group-hover:text-primary-hover transition">
-      WeMeme - DeFi Platform
-    </h3>
-    <p className="text-secondary mb-4">
-      Solana-based token launch platform with real-time blockchain monitoring
-    </p>
-    <div className="flex flex-wrap gap-2 mb-4">
-      <span className="px-3 py-1 bg-white text-primary text-sm rounded-full font-mono border border-secondary/30">
-        Rust
-      </span>
-      <span className="px-3 py-1 bg-white text-primary text-sm rounded-full font-mono border border-secondary/30">
-        Solana
-      </span>
-    </div>
-    <a href="#" className="text-primary hover:text-secondary font-medium">
-      Learn more →
-    </a>
-  </div>
-</div>
-```
-
-#### Button Component
-
-```tsx
-// Primary button
-<button className="bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors">
-  Primary Action
-</button>
-
-// Secondary button
-<button className="bg-secondary hover:bg-secondary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors">
-  Secondary Action
-</button>
-
-// Outline button
-<button className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-all">
-  Outline Button
-</button>
-
-// Tertiary/Ghost button
-<button className="bg-tertiary hover:bg-tertiary-hover text-primary border border-secondary/30 px-6 py-3 rounded-lg font-medium transition-colors">
-  Tertiary Action
-</button>
-```
-
-### Using CSS Custom Properties
-
-For custom CSS or when Tailwind utilities aren't suitable:
+### Keyframe Animations
 
 ```css
-.custom-card {
-  background-color: var(--color-tertiary);
-  color: var(--color-primary);
-  border: 1px solid var(--color-secondary);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+/* Fade up entrance */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.custom-card:hover {
-  background-color: var(--color-white);
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Water flow (button shine) */
+@keyframes water-flow {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
-.custom-link {
-  color: var(--color-primary);
-  font-family: var(--font-family-sans);
-  text-decoration: none;
-  transition: color 0.2s ease;
+/* Shimmer effect */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+```
+
+### Animation Utilities
+
+```css
+.animate-fade-up {
+    animation: fade-up 1s ease-out forwards;
+    opacity: 0;
 }
 
-.custom-link:hover {
-  color: var(--color-secondary);
+.animation-delay-200 {
+    animation-delay: 0.2s;
 }
 
-.code-block {
-  background-color: var(--color-tertiary);
-  color: var(--color-primary);
-  font-family: var(--font-family-mono);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-neutral-200);
-  overflow-x: auto;
+.animation-delay-400 {
+    animation-delay: 0.4s;
 }
+
+.animation-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+    animation-delay: 0.8s;
+}
+
+.animation-delay-1000 {
+    animation-delay: 1s;
+}
+```
+
+**Usage:**
+
+```html
+<h1 className="animate-fade-up">Hello!</h1>
+<h2 className="animate-fade-up animation-delay-200">I'm Manoj</h2>
+```
+
+### Transition Patterns
+
+```html
+<!-- Standard transitions -->
+<div className="transition-all duration-300">
+    <a className="transition-colors duration-200">
+
+        <!-- Hover effects -->
+        <img className="transition-transform duration-300 hover:scale-105">
+        <div className="hover:border-wave-primary/30 transition-all">
+```
+
+### Special Animations
+
+**3D Wave** (`/components/common/Interactive3DWave.tsx`):
+
+- Canvas-based particle system (50x50 grid)
+- Mouse tracking with 250px influence radius
+- Continuous wave motion
+
+**Typing Animation** (`/components/common/TypingCodeAnimation.tsx`):
+
+- Character-by-character reveal
+- Props: `typingSpeed` (50ms), `pauseDuration` (2000ms)
+- Blinking cursor effect
+
+---
+
+## 8. Image Handling
+
+### Image Assets Location
+
+```
+/src/assets/images/
+├── hero-profile-image.png        # Desktop hero (1920x1080+)
+├── hero-profile-image-3.png      # Mobile hero (800x800+)
+├── profile-image.png             # Profile avatar
+└── about-bg.png                  # About background
+```
+
+### Import Pattern
+
+```typescript
+import heroImage from '../../assets/images/hero-profile-image.png';
+```
+
+### Background Image Usage
+
+```html
+<!-- CSS background -->
+<div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+/>
+```
+
+### Responsive Images
+
+```html
+<!-- Desktop only -->
+<div className="hidden md:block" style={{ backgroundImage: `url(${desktopImg})` }}/>
+
+<!-- Mobile only -->
+<div className="md:hidden" style={{ backgroundImage: `url(${mobileImg})` }}/>
+```
+
+### Image Optimization
+
+**Preloading (in `index.html`):**
+
+```html
+
+<link rel="preload" as="image" href="../../src/assets/images/hero-profile-image.png"/>
+```
+
+**Common Classes:**
+
+```html
+<!-- Hero backgrounds -->
+className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+
+<!-- Profile images -->
+className="w-10 h-10 rounded-full object-cover"
+
+<!-- Hover effects -->
+className="hover:scale-105 transition-transform duration-300"
 ```
 
 ---
 
-## Best Practices
+## 9. Routing Structure
 
-### Color Usage Guidelines
+### Route Constants
 
-#### Do's ✅
+**Path:** `/router/routes.ts`
 
-1. **Use white for main backgrounds**
-   ```tsx
-   <body className="bg-white">
-   ```
-
-2. **Use tertiary for card/section backgrounds**
-   ```tsx
-   <div className="bg-tertiary rounded-lg p-6">
-   ```
-
-3. **Use primary for text, headings, and key elements**
-   ```tsx
-   <h1 className="text-primary">Heading</h1>
-   <button className="bg-primary text-white">Action</button>
-   ```
-
-4. **Use secondary for supporting text and borders**
-   ```tsx
-   <p className="text-secondary">Caption text</p>
-   <div className="border border-secondary">
-   ```
-
-5. **Use opacity for subtle variations**
-   ```tsx
-   <p className="text-primary/80">Slightly muted text</p>
-   <div className="border border-secondary/30">Subtle border</div>
-   ```
-
-#### Don'ts ❌
-
-1. **Don't use too many background colors**
-   ```tsx
-   {/* Avoid - stick to white and tertiary for most backgrounds */}
-   <div className="bg-neutral-200">
-   ```
-
-2. **Don't use pure black (#000000) except for hover states**
-   ```tsx
-   {/* Avoid for text - use primary (#222222) instead */}
-   <p className="text-black">
-
-   {/* Prefer */}
-   <p className="text-primary">
-   ```
-
-3. **Don't skip contrast checks**
-   - Ensure text has sufficient contrast against backgrounds
-   - Primary (#222222) and secondary (#7B7B7B) work well on white/tertiary
-   - Always test readability
-
-4. **Don't hardcode colors**
-   ```tsx
-   {/* Avoid */}
-   <div style={{ backgroundColor: '#222222' }}>
-
-   {/* Use Tailwind classes instead */}
-   <div className="bg-primary">
-   ```
-
-5. **Don't overuse neutral shades**
-   ```tsx
-   {/* The brand colors should be your first choice */}
-   {/* Use neutral-50 through neutral-950 only when needed */}
-   ```
-
-### Typography Best Practices
-
-#### Hierarchy
-
-```tsx
-// Good hierarchy example
-<article>
-  <h1 className="text-5xl font-bold text-white mb-4">Article Title</h1>
-  <p className="text-lg text-neutral-400 mb-6">Subtitle or lead paragraph</p>
-  <div className="text-base text-white/90 space-y-4">
-    <p>Body content...</p>
-  </div>
-</article>
+```typescript
+export const ROUTES = {
+    HOME: '/',
+    ABOUT: '/about',
+    PROJECTS: '/projects',
+    CONTACT: '/contact',
+    RESUME: '/resume',
+} as const;
 ```
 
-#### Responsive Typography
+### Router Setup
 
-```tsx
-// Scale font sizes responsively
-<h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">
-  Responsive Heading
-</h1>
+**Path:** `/router/index.tsx`
 
-// Adjust line height for readability
-<p className="text-base leading-relaxed lg:text-lg lg:leading-loose">
-  Readable body text with appropriate line height
-</p>
+- Uses `createBrowserRouter` from React Router v7
+- Layout component wraps all routes
+- Navbar and Footer persist across pages
+
+**Layout Structure:**
+
+```
+<Layout>
+  ├─ <Navbar /> (sticky, z-50)
+  ├─ <main>
+  │   └─ <Outlet /> (page content)
+  └─ <Footer /> (mt-auto)
+</Layout>
 ```
 
-#### Code Formatting
+---
 
-```tsx
-// Use mono font for code
-<code className="font-mono text-sm bg-neutral-900 text-primary px-2 py-1 rounded">
-  const example = true;
-</code>
+## 10. Data Management
 
-// Code blocks
-<pre className="font-mono text-sm bg-neutral-900 text-primary p-4 rounded-lg overflow-x-auto">
-  {codeContent}
-</pre>
+### Data Structure
+
+**Path:** `/data/portfolio.ts`
+
+```typescript
+const portfolioData: PortfolioData = {
+    about: {
+        name: string;
+        title: string;
+        tagline: string;
+        bio: string;
+        yearsOfExperience: {software: number; civil: number;};
+    },
+    skills: Skill[],
+    experience: Experience[],
+    projects: Project[],
+    education: Education[],
+    contact: Contact,
+};
 ```
 
-### Spacing & Layout
+### Type Definitions
 
-```tsx
-// Consistent spacing with Tailwind's scale
-<div className="space-y-4">      {/* 1rem gaps */}
-<div className="space-y-6">      {/* 1.5rem gaps */}
-<div className="space-y-8">      {/* 2rem gaps */}
+**Path:** `/types/index.ts`
 
-// Padding
-<div className="p-4">           {/* 1rem all sides */}
-<div className="px-6 py-4">     {/* Horizontal: 1.5rem, Vertical: 1rem */}
+```typescript
+export interface Project {
+    id: string;
+    title: string;
+    description: string;
+    role: string;
+    period: string;
+    technologies: string[];
+    achievements: string[];
+    image?: string;
+    githubUrl?: string;
+    liveUrl?: string;
+    featured?: boolean;
+    category: 'blockchain' | 'fullstack' | 'automation' | 'freelance';
+}
 
-// Container widths
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  {/* Responsive container */}
-</div>
+export interface Skill {
+    id: string;
+    name: string;
+    category: 'languages' | 'frontend' | 'backend' | 'blockchain' | 'ai' | 'devops' | 'database' | 'game';
+    items?: string[];
+}
 ```
+
+### Content Service
+
+**Path:** `/services/contentServices.ts`
+
+**Available Methods:**
+
+- `getAll()` - Get all portfolio data
+- `getProjects()` - Get all projects
+- `getProjectById(id)` - Get single project
+- `getFeaturedProjects()` - Get featured projects
+- `getProjectsByCategory(category)` - Filter by category
+- `getAbout()` - Get about data
+- `getSkills()` - Get skills
+- `getExperience()` - Get work experience
+- `getEducation()` - Get education
+- `getContact()` - Get contact info
+
+---
+
+## 11. Theme System
+
+### Theme Context
+
+**Path:** `/contexts/ThemeContext.tsx`
+
+```typescript
+type Theme = 'light' | 'dark' | 'system';
+
+interface ThemeContextType {
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+    isDark: boolean;
+}
+```
+
+### Theme Implementation
+
+- Classes added to `<html>`: `.light` or `.dark`
+- Persisted in `localStorage` as `'theme'`
+- System preference detection via `matchMedia`
+- Tailwind config: `darkMode: 'class'`
+
+### Dark Mode Patterns
+
+```html
+<!-- Background -->
+<div className="bg-white dark:bg-neutral-950">
+
+    <!-- Text -->
+    <p className="text-neutral-950 dark:text-white">
+
+        <!-- Borders -->
+    <div className="border-neutral-200 dark:border-white/10">
+
+        <!-- Hover states -->
+        <button className="hover:bg-neutral-100 dark:hover:bg-neutral-800">
+```
+
+---
+
+## 12. Layout & Spacing System
+
+### Global Variables
+
+```css
+--navbar-height:
+
+50
+px
+
+; /* Fixed navbar height */
+```
+
+### Navbar Layout
+
+```html
+
+<nav className="sticky top-0 z-50 h-16 shadow-md border-b-2 border-neutral-200 dark:border-white/10">
+```
+
+### Section Padding
+
+```html
+<!-- Standard sections -->
+<Container className="py-20">
+
+    <!-- With navbar offset -->
+    <div className="min-h-[calc(100vh-var(--navbar-height))]">
+```
+
+### Grid Patterns
+
+```html
+<!-- 2-column responsive -->
+<div className="grid md:grid-cols-2 gap-8">
+
+    <!-- 3-column responsive -->
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 4-column project grid -->
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+```
+
+---
+
+## 13. Creating New Components - Quick Reference
+
+### Template: New Page
+
+```typescript
+import {useEffect} from 'react';
+import Container from '../components/common/Container';
+
+const NewPage = () => {
+    useEffect(() => {
+        window.scrollTo({top: 0});
+    }, []);
+
+    return (
+        <div className = "relative min-h-screen text-neutral-200" >
+            {/* Background */}
+            < div
+    className = "absolute inset-0 bg-black/50 -z-10" / >
+
+        {/* Content */}
+        < div
+    className = "relative z-10" >
+    <Container className = "pt-20 pb-12" >
+    <h1 className = "text-gradient font-aeonik text-[56px] md:text-[72px] tracking-[-0.05em] leading-none mb-4 animate-fade-up" >
+        Page
+    Title
+    < /h1>
+
+    {/* Your content here */
+    }
+    </Container>
+    < /div>
+    < /div>
+)
+    ;
+};
+
+export default NewPage;
+```
+
+### Template: New Card Component
+
+```typescript
+interface CustomCardProps {
+    // Define your props
+}
+
+const CustomCard = ({}: CustomCardProps) => {
+    return (
+        <div className = "bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-wave-primary/30 transition-all duration-300 hover:scale-[1.02]" >
+            {/* Card content */}
+            < /div>
+    );
+};
+
+export default CustomCard;
+```
+
+### Common Class Combinations
+
+```html
+<!-- Glass card effect -->
+<div className="bg-white/5 backdrop-blur-sm border border-white/10">
+
+    <!-- Gradient background -->
+    <div className="bg-gradient-to-r from-wave-primary/10 to-wave-secondary/10">
+
+        <!-- Hover card -->
+        <div className="transition-all duration-300 hover:scale-[1.02] hover:border-wave-primary/30">
+
+            <!-- Text gradient -->
+            <h1 className="text-gradient font-aeonik tracking-[-0.05em]">
+
+                <!-- Responsive spacing -->
+                <section className="py-8 md:py-12 lg:py-20">
+```
+
+---
+
+## 14. Important Technical Notes
 
 ### Performance
 
-1. **Lazy load images below the fold**
-2. **Use WebP format with fallbacks**
-3. **Minimize use of shadows and complex gradients**
-4. **Use CSS transforms for animations** (instead of position changes)
-5. **Avoid excessive @apply in CSS** (use utility classes directly)
+- Fixed-width containers use `px` instead of `rem`
+- Font display swap for custom fonts
+- Hero images preloaded in HTML
+- Canvas animations are GPU accelerated
+
+### Accessibility
+
+- Semantic HTML structure
+- ARIA labels on interactive elements
+- Proper contrast ratios
+- System font fallbacks
+
+### Browser Support
+
+- ES2022 target
+- CSS Grid and Flexbox required
+- Canvas API for 3D wave
+- CSS custom properties
 
 ---
 
-## Future Enhancements
+## 15. Color Combinations for New Designs
 
-### Potential Additions
+### Recommended Gradients
 
-1. **Light Mode Theme**
-   - Complete light theme using neutral-50 to neutral-400
-   - Adjust primary and accent colors for light backgrounds
-   - Theme toggle component
+```css
+/* Primary Gradient */
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8
 
-2. **Additional Semantic Colors**
-   ```css
-   @theme {
-       --color-success: #10b981;
-       --color-warning: #f59e0b;
-       --color-error: #ef4444;
-       --color-info: #3b82f6;
-   }
-   ```
+)
 
-3. **Gradient Utilities**
-   ```css
-   @theme {
-       --color-gradient-primary: linear-gradient(135deg, #00bbff, #fb64b6);
-       --color-gradient-dark: linear-gradient(180deg, #030712, #11131e);
-   }
-   ```
+/* Full Spectrum */
+linear-gradient
+(
+135
+deg, #dc8af5, #f58ad8, #8ab3f5
 
-4. **Animation Presets**
-   - Fade in/out
-   - Slide transitions
-   - Scale effects
-   - Loading states
+)
 
-5. **Component Variants**
-   - Button sizes (sm, md, lg, xl)
-   - Input styles
-   - Card variants
-   - Badge styles
+/* Accent Gradient */
+linear-gradient
+(
+135
+deg, #8ab3f5, #dc8af5
 
----
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: Tailwind classes not working
-- **Check**: Is `@import "tailwindcss"` at the top of `index.css`?
-- **Check**: Is PostCSS configured correctly?
-- **Check**: Are the content paths correct in `tailwind.config.js`?
-
-**Issue**: Custom colors not generating utilities
-- **Check**: Are colors defined in `@theme` block in `index.css`?
-- **Check**: Is the syntax correct (`--color-name: value`)?
-- **Check**: For DEFAULT colors, use the wildcard pattern (`--color-primary-*: initial`)
-
-**Issue**: Dark mode not working
-- **Check**: Is `darkMode: 'class'` set in `tailwind.config.js`?
-- **Check**: Is the custom variant defined (`@custom-variant dark`)?
-- **Check**: Is `.dark` class being applied to the root element?
-
-**Issue**: Fonts not loading
-- **Check**: Are font links in `<head>` of `index.html`?
-- **Check**: Do font names in `@theme` match Google Fonts names exactly?
-- **Check**: Are quotes around font names in CSS?
-
-**Issue**: CSS variables not working in JavaScript
-```typescript
-// Correct way to access CSS variables
-const primaryColor = getComputedStyle(document.documentElement)
-  .getPropertyValue('--color-primary');
+)
 ```
 
----
+### Shadow Patterns
 
-## Version Information
+```css
+/* Primary button glow */
+box-shadow:
 
-- **Tailwind CSS**: v4.x (using `@import` and `@theme` syntax)
-- **PostCSS**: Latest compatible version
-- **React**: 19.x
-- **TypeScript**: 5.8+
+0
+4
+px
 
----
+15
+px
 
-## References
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.4
+)
+,
+0
+0
+20
+px
 
-- [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs)
-- [Tailwind CSS v4 Migration Guide](https://tailwindcss.com/docs/upgrade-guide)
-- [Google Fonts - Inter](https://fonts.google.com/specimen/Inter)
-- [Google Fonts - IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
-- [CSS Custom Properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
-- [Dark Mode Implementation](https://tailwindcss.com/docs/dark-mode)
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.2
+)
+;
 
----
+/* Hover glow */
+box-shadow:
 
-## Quick Reference
+0
+0
+5
+px
 
-### Most Used Color Classes
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.6
+)
+,
+0
+0
+30
+px
 
-```tsx
-// Backgrounds
-bg-white        // Main page background
-bg-tertiary     // Card/section backgrounds
-bg-primary      // Primary buttons
-bg-secondary    // Secondary buttons
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.3
+)
+;
 
-// Text
-text-primary    // Primary text, headings
-text-secondary  // Secondary text, captions
-text-white      // Text on dark backgrounds
+/* Text drop shadow */
+filter:
 
-// Borders
-border-secondary    // Standard borders
-border-primary      // Emphasized borders
-border-secondary/30 // Subtle borders (with opacity)
+drop-shadow
+(
+0
+4
+px
 
-// Hover States
-hover:bg-primary-hover      // Primary hover
-hover:bg-secondary-hover    // Secondary hover
-hover:bg-tertiary-hover     // Tertiary hover
-hover:text-primary-hover    // Text hover
+8
+px
+
+rgba
+(
+220
+,
+138
+,
+245
+,
+0.4
+)
+)
+drop-shadow
+(
+0
+8
+px
+
+16
+px
+
+rgba
+(
+139
+,
+179
+,
+245
+,
+0.3
+)
+)
+;
 ```
 
-### Most Used Typography Classes
+### Common Color Combinations
 
-```tsx
-// Headings
-text-6xl font-bold        // Hero (60px)
-text-4xl font-bold        // Page title (36px)
-text-2xl font-semibold    // Section heading (24px)
-text-xl font-medium       // Subsection (20px)
+| Use Case           | Classes                                              |
+|--------------------|------------------------------------------------------|
+| **Glass effect**   | `bg-white/5 backdrop-blur-sm border border-white/10` |
+| **Card hover**     | `hover:border-wave-primary/30 hover:shadow-lg`       |
+| **Dark overlay**   | `bg-black/50` or `bg-neutral-950/80`                 |
+| **Gradient text**  | `text-gradient` (predefined class)                   |
+| **Primary accent** | `text-wave-primary` or `border-wave-primary`         |
 
-// Body
-text-base                 // Body text (16px)
-text-sm text-neutral-400  // Caption (14px)
-text-xs text-neutral-500  // Small text (12px)
+---
 
-// Code
-font-mono text-sm         // Inline code
-font-mono text-primary    // Code highlighting
-```
+## Summary
+
+This design system follows a **dark, modern aesthetic** with purple-blue gradient accents, mobile-first responsive
+design, and smooth animations throughout. The color palette centers around the wave colors (`#dc8af5`, `#f58ad8`,
+`#8ab3f5`) with a neutral grayscale foundation.
+
+**Key principles:**
+
+- Mobile-first responsive design
+- Dark mode by default with light mode support
+- Smooth transitions and subtle animations
+- Glass morphism and gradient accents
+- Consistent spacing and typography scale
+
+When creating new components, always:
+
+1. Use the Container component for consistent max-width and padding
+2. Apply responsive classes (`md:`, `lg:`) for mobile-first design
+3. Use predefined button styles (`.primary-button`, `.secondary-button`)
+4. Include dark mode variants (`dark:`)
+5. Add smooth transitions for interactive elements
+6. Follow the established color palette and gradients
