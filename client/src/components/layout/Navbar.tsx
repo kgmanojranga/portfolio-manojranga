@@ -79,7 +79,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden pb-4 mt-2">
-            <ul className="space-y-2 p-4 bg-white/10 rounded-md">
+            <ul className="space-y-2 p-4 bg-black/80 rounded-md">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
