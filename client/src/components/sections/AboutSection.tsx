@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import Container from '../common/Container';
 import portfolioData from '../../data/portfolio';
-import aboutBackground from '../../assets/images/about-bg.png';
-import heroImage from '../../assets/images/profile-image.png';
+import aboutBackground from '../../assets/images/about-bg-low.jpg';
+import heroImage from '../../assets/images/profile-image-2-low.jpg';
 
 const AboutSection = () => {
   const { about } = portfolioData;
