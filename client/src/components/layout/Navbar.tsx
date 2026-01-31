@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../router/routes';
 import Container from '../common/Container';
-import profileImage from '../../assets/images/profile-image-2.png';
+import profileImage from '../../assets/images/profile-image-2-low.jpg'; // import ThemeToggle from '../common/ThemeToggle'; // Removed - dark mode only
 // import ThemeToggle from '../common/ThemeToggle'; // Removed - dark mode only
 
 const Navbar = () => {
