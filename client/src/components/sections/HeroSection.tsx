@@ -4,7 +4,7 @@ import heroProfileImage2 from '../../assets/images/hero-profile-image-3-low.jpg'
 
 const HeroSection = () => {
   return (
-    <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center py-8 relative">
+    <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center py-8 relative bg-neutral-950">
       {/* Background image for small screens */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden transition-opacity duration-100"
