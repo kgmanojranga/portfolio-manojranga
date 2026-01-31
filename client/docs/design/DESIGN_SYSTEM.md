@@ -154,8 +154,8 @@ All colors are defined in `/src/index.css` using the `@theme` directive.
 --color-wave-accent: #8ab3f5 /* Blue - links, highlights */
 --color-wave-bg: #000000 /* Canvas black */
 --color-wave-overlay:
-
 rgba
+
 (
 0
 ,
@@ -212,8 +212,8 @@ The `text-gradient` class applies:
 
 ```css
 background:
-
 linear-gradient
+
 (
 135
 deg, #dc8af5, #f58ad8, #8ab3f5
@@ -676,7 +676,7 @@ import heroImage from '../../assets/images/hero-profile-image.png';
 
 ```html
 
-<link rel="preload" as="image" href="../../src/assets/images/hero-profile-image.png"/>
+<link rel="preload" as="image" href="../../src/assets/images/hero-profile-image-low.jpg"/>
 ```
 
 **Common Classes:**
@@ -998,6 +998,7 @@ export default CustomCard;
 ```css
 /* Primary Gradient */
 linear-gradient
+
 (
 135
 deg, #dc8af5, #f58ad8
@@ -1006,6 +1007,7 @@ deg, #dc8af5, #f58ad8
 
 /* Full Spectrum */
 linear-gradient
+
 (
 135
 deg, #dc8af5, #f58ad8, #8ab3f5
@@ -1014,6 +1016,7 @@ deg, #dc8af5, #f58ad8, #8ab3f5
 
 /* Accent Gradient */
 linear-gradient
+
 (
 135
 deg, #8ab3f5, #dc8af5
@@ -1033,8 +1036,8 @@ px
 
 15
 px
-
 rgba
+
 (
 220
 ,
@@ -1049,8 +1052,8 @@ rgba
 0
 20
 px
-
 rgba
+
 (
 220
 ,
@@ -1069,8 +1072,8 @@ box-shadow:
 0
 5
 px
-
 rgba
+
 (
 220
 ,
@@ -1085,8 +1088,8 @@ rgba
 0
 30
 px
-
 rgba
+
 (
 220
 ,
@@ -1100,8 +1103,8 @@ rgba
 
 /* Text drop shadow */
 filter:
-
 drop-shadow
+
 (
 0
 4
@@ -1109,8 +1112,8 @@ px
 
 8
 px
-
 rgba
+
 (
 220
 ,
@@ -1122,6 +1125,7 @@ rgba
 )
 )
 drop-shadow
+
 (
 0
 8
@@ -1129,8 +1133,8 @@ px
 
 16
 px
-
 rgba
+
 (
 139
 ,
