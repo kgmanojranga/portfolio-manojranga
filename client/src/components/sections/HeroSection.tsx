@@ -1,5 +1,5 @@
 import Container from '../common/Container';
-import heroProfileImage from '../../assets/images/hero-profile-image.png';
+import heroProfileImage from '../../assets/images/hero-profile-image-low.jpg';
 import heroProfileImage2 from '../../assets/images/hero-profile-image-3-low.jpg';
 
 const HeroSection = () => {
