@@ -3,6 +3,7 @@ import type { Project } from '../types';
 import { contentService } from '../services/contentServices.ts';
 import Container from '../components/common/Container';
 import ProjectCard from '../components/cards/ProjectCard';
+import Interactive3DWave from '../components/common/Interactive3DWave.tsx';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -103,7 +104,9 @@ const ProjectsPage = () => {
   return (
     <div className="relative min-h-screen text-neutral-200">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 -z-10" />
+      <div className="absolute inset-0 bg-black/50" />
+      <Interactive3DWave />
+      {/*<div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 -z-10" />*/}
 
       {/* Hero Section */}
       <div className="relative z-10 border-b border-white/10">
@@ -148,7 +151,10 @@ const ProjectsPage = () => {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">
                   <span className="text-2xl font-bold text-gradient">
-                    {categories.filter((c) => c.count > 0 && c.value !== 'all').length}
+                    {
+                      categories.filter((c) => c.count > 0 && c.value !== 'all')
+                        .length
+                    }
                   </span>
                 </div>
                 <div>
@@ -162,7 +168,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* Filters */}
-      <div className="sticky top-16 z-20 bg-neutral-950/80 backdrop-blur-lg border-b border-white/10">
+      <div className="sticky top-[var(--navbar-height)] z-20 bg-neutral-950/80 backdrop-blur-lg border-b border-white/10">
         <Container className="py-6">
           <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
@@ -179,9 +185,7 @@ const ProjectsPage = () => {
                 {category.count > 0 && (
                   <span
                     className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
-                      filter === category.value
-                        ? 'bg-white/20'
-                        : 'bg-white/10'
+                      filter === category.value ? 'bg-white/20' : 'bg-white/10'
                     }`}
                   >
                     {category.count}
@@ -238,7 +242,10 @@ const ProjectsPage = () => {
             <p className="text-neutral-400 mb-6">
               No projects match the selected category. Try a different filter.
             </p>
-            <button onClick={() => setFilter('all')} className="secondary-button">
+            <button
+              onClick={() => setFilter('all')}
+              className="secondary-button"
+            >
               View All Projects
             </button>
           </div>
