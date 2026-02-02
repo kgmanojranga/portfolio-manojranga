@@ -18,9 +18,7 @@ const SkillsExpertise = ({ skills }: SkillsExpertiseProps) => {
             className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-wave-primary/30 transition-all hover:transform hover:scale-[1.02] animate-fade-up"
             style={{ animationDelay: `${(index + 1) * 50}ms` }}
           >
-            <h3 className="text-xl font-bold text-white mb-4">
-              {skill.name}
-            </h3>
+            <h3 className="text-xl font-bold text-white mb-4">{skill.name}</h3>
             {skill.items && skill.items.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item) => (
