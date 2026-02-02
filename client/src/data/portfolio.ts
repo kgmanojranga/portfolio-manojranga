@@ -128,16 +128,16 @@ const portfolioData: PortfolioData = {
         'Working on full-stack development across multiple production applications spanning web platforms, blockchain protocols, and automation frameworks. Developed scalable frontend interfaces using React and TypeScript, built backend services with Firebase Cloud Functions and NestJS, implemented blockchain smart contracts on Solana using Rust/Anchor framework and Ethereum using Solidity, and created comprehensive test automation frameworks with Selenium WebDriver. Contributed to building enterprise-grade SaaS platforms including real-time video conferencing systems, DeFi token launch protocols, fantasy gaming applications with Web3 integration, and AI-powered character generation platforms. Achieved sub-second transaction detection processing 100+ blockchain events/minute, developed 60-80% database query optimization for trading data, and built comprehensive test suites with cross-browser and mobile device emulation.',
       projects: [],
     },
-    // {
-    //   id: '2',
-    //   company: 'Talpha Solutions',
-    //   position: 'Freelance Software Developer',
-    //   period: 'November 2024 - November 2025',
-    //   location: 'Remote',
-    //   description:
-    //     'Providing frontend development services for enterprise clients in construction equipment rental and marketing industries. Developed production-ready React applications featuring complex state management, advanced data visualization, and seamless API integration. Built equipment hire management dashboard for CityHire with AG Grid React implementation featuring server-side pagination and CSV export, and created media planning platform for Media Future Market with AI-powered content scoring and interactive timeline visualizations using Recharts. Implemented form validation systems with React Hook Form and Yup, Google Maps API integration, and PDF generation capabilities while delivering responsive UI/UX using TailwindCSS.',
-    //   projects: [],
-    // },
+    {
+      id: '2',
+      company: 'Talpha Solutions',
+      position: 'Freelance Software Developer',
+      period: 'November 2024 - November 2025',
+      location: 'Remote',
+      description:
+        'Providing frontend development services for enterprise clients in construction equipment rental and marketing industries. Developed production-ready React applications featuring complex state management, advanced data visualization, and seamless API integration. Built equipment hire management dashboard for CityHire with AG Grid React implementation featuring server-side pagination and CSV export, and created media planning platform for Media Future Market with AI-powered content scoring and interactive timeline visualizations using Recharts. Implemented form validation systems with React Hook Form and Yup, Google Maps API integration, and PDF generation capabilities while delivering responsive UI/UX using TailwindCSS.',
+      projects: [],
+    },
     {
       id: '3',
       company: 'Maga Engineering Pvt Ltd',
