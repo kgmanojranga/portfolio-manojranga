@@ -111,11 +111,11 @@ const ProjectsPage = () => {
       {/* Hero Section */}
       <div className="relative z-10 border-b border-white/10">
         <Container className="pt-24 pb-16">
-          <div className="max-w-4xl">
+          <div className="max-w-full">
             <h1 className="text-gradient font-aeonik text-[48px] sm:text-[64px] md:text-[80px] tracking-[-0.05em] leading-none mb-6 animate-fade-up">
               My Projects
             </h1>
-            <p className="text-neutral-300 text-lg leading-relaxed max-w-2xl animate-fade-up animation-delay-200">
+            <p className="text-neutral-300 text-[14px] md:text-[16px] leading-relaxed animate-fade-up animation-delay-200">
               A collection of my work spanning blockchain development,
               full-stack applications, AI automation, and freelance projects.
               Each project represents a unique challenge and learning
@@ -123,46 +123,46 @@ const ProjectsPage = () => {
             </p>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-6 mt-8 animate-fade-up animation-delay-400">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gradient">
-                    {allProjects.length}
-                  </span>
-                </div>
-                <div>
-                  <div className="text-sm text-neutral-400">Total</div>
-                  <div className="text-white font-semibold">Projects</div>
-                </div>
-              </div>
+            {/*<div className="flex flex-wrap gap-6 mt-8 animate-fade-up animation-delay-400">*/}
+            {/*  <div className="flex items-center gap-3">*/}
+            {/*    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">*/}
+            {/*      <span className="text-2xl font-bold text-gradient">*/}
+            {/*        {allProjects.length}*/}
+            {/*      </span>*/}
+            {/*    </div>*/}
+            {/*    <div>*/}
+            {/*      <div className="text-sm text-neutral-400">Total</div>*/}
+            {/*      <div className="text-white font-semibold">Projects</div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
 
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gradient">
-                    {allProjects.filter((p) => p.featured).length}
-                  </span>
-                </div>
-                <div>
-                  <div className="text-sm text-neutral-400">Featured</div>
-                  <div className="text-white font-semibold">Highlights</div>
-                </div>
-              </div>
+            {/*  <div className="flex items-center gap-3">*/}
+            {/*    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">*/}
+            {/*      <span className="text-2xl font-bold text-gradient">*/}
+            {/*        {allProjects.filter((p) => p.featured).length}*/}
+            {/*      </span>*/}
+            {/*    </div>*/}
+            {/*    <div>*/}
+            {/*      <div className="text-sm text-neutral-400">Featured</div>*/}
+            {/*      <div className="text-white font-semibold">Highlights</div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
 
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gradient">
-                    {
-                      categories.filter((c) => c.count > 0 && c.value !== 'all')
-                        .length
-                    }
-                  </span>
-                </div>
-                <div>
-                  <div className="text-sm text-neutral-400">Active</div>
-                  <div className="text-white font-semibold">Categories</div>
-                </div>
-              </div>
-            </div>
+            {/*  <div className="flex items-center gap-3">*/}
+            {/*    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-wave-primary/20 to-wave-secondary/20 border border-wave-primary/30 flex items-center justify-center">*/}
+            {/*      <span className="text-2xl font-bold text-gradient">*/}
+            {/*        {*/}
+            {/*          categories.filter((c) => c.count > 0 && c.value !== 'all')*/}
+            {/*            .length*/}
+            {/*        }*/}
+            {/*      </span>*/}
+            {/*    </div>*/}
+            {/*    <div>*/}
+            {/*      <div className="text-sm text-neutral-400">Active</div>*/}
+            {/*      <div className="text-white font-semibold">Categories</div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
           </div>
         </Container>
       </div>
@@ -175,9 +175,9 @@ const ProjectsPage = () => {
               <button
                 key={category.value}
                 onClick={() => setFilter(category.value as typeof filter)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
+                className={`border-white/10 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
                   filter === category.value
-                    ? 'bg-gradient-to-r from-wave-primary to-wave-secondary text-white shadow-lg shadow-wave-primary/25 scale-105'
+                    ? 'bg-gradient-to-r from-wave-primary to-wave-secondary text-white shadow-lg shadow-wave-primary/25 border-none'
                     : 'bg-white/5 text-neutral-300 border border-white/10 hover:border-wave-primary/30 hover:text-white'
                 }`}
               >
