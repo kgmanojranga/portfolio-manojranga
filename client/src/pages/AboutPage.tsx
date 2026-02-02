@@ -3,6 +3,7 @@ import Container from '../components/common/Container';
 import portfolioData from '../data/portfolio';
 import Interactive3DWave from '../components/common/Interactive3DWave.tsx';
 import WhoIAm from '../components/sections/WhoIAm';
+import Education from '../components/sections/Education';
 import ProfessionalJourney from '../components/sections/ProfessionalJourney';
 import SkillsExpertise from '../components/sections/SkillsExpertise';
 import BeyondCode from '../components/sections/BeyondCode';
@@ -59,7 +60,10 @@ const AboutPage = () => {
         </Container>
 
         {/* Personal Introduction Section */}
-        <WhoIAm about={about} education={education} />
+        <WhoIAm about={about} />
+
+        {/* Education Section */}
+        <Education education={education} />
 
         {/* Experience Timeline Section */}
         <ProfessionalJourney experience={experience} />
