@@ -461,7 +461,13 @@
     size: letter;
   }
 
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   body {
+    background: white !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -473,15 +479,25 @@
     display: none !important;
   }
 
-  /* Ensure proper spacing and layout */
+  /* Remove all backgrounds and borders from containers */
+  .print\:py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .print\:p-0 {
+    padding: 0 !important;
+  }
+
   .print\:py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 
   /* Force white background and black text for printing */
   .print\:bg-white {
     background-color: white !important;
+    background-image: none !important;
   }
 
   .print\:text-black {
@@ -496,6 +512,10 @@
     color: #525252 !important;
   }
 
+  .print\:text-neutral-400 {
+    color: #a3a3a3 !important;
+  }
+
   .print\:border-neutral-300 {
     border-color: #d4d4d4 !important;
   }
@@ -508,12 +528,30 @@
     background-color: #f5f5f5 !important;
   }
 
+  .print\:bg-neutral-400 {
+    background-color: #a3a3a3 !important;
+  }
+
   .print\:bg-neutral-800 {
     background-color: #262626 !important;
   }
 
-  .print\:border-none {
+  .print\:border-none,
+  .print\:border-0 {
     border: none !important;
+    border-width: 0 !important;
+  }
+
+  .print\:rounded-none {
+    border-radius: 0 !important;
+  }
+
+  .print\:backdrop-blur-none {
+    backdrop-filter: none !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
   }
 
   /* Prevent page breaks inside elements */
@@ -531,5 +569,12 @@
   /* Ensure links are visible in print */
   a[href^='http']::after {
     content: none;
+  }
+
+  /* Remove any gradients or dark backgrounds */
+  div[class*='bg-gradient'],
+  div[class*='bg-neutral-9'] {
+    background: transparent !important;
+    background-image: none !important;
   }
 }

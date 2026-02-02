@@ -180,8 +180,8 @@ const ResumePage = () => {
       </div>
 
       {/* Resume Content */}
-      <Container className="py-12 print:py-8">
-        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 print:border-none print:bg-white print:text-black">
+      <Container className="py-12 print:py-0 print:p-0">
+        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 print:border-0 print:bg-white print:text-black print:rounded-none print:backdrop-blur-none print:shadow-none">
           {/* Header Section */}
           <div className="p-8 md:p-12 border-b border-white/10 print:border-neutral-300">
             <div className="text-center">
