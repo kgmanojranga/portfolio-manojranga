@@ -83,10 +83,10 @@ const HeroSection = () => {
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start items-center animate-fade-up animation-delay-800 px-4 md:px-0">
-            <a href="#projects" className="primary-button">
+            <a href="projects" className="primary-button">
               <span className="primary-button-text">View Projects</span>
             </a>
-            <a href="#contact" className="secondary-button">
+            <a href="contact" className="secondary-button">
               Contact Me
             </a>
             <a href="/resume" className="general-button">
