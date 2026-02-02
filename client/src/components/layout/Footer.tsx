@@ -18,16 +18,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link
-              to={ROUTES.HOME}
-              className="inline-block mb-4 group"
-            >
+            <Link to={ROUTES.HOME} className="inline-block mb-4 group">
               <h3 className="text-gradient font-aeonik text-2xl md:text-3xl font-bold tracking-tight transition-all duration-300 group-hover:scale-105">
                 {name}
               </h3>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
-              Full-stack developer crafting innovative solutions with modern technologies.
+              Full-stack developer crafting innovative solutions with modern
+              technologies.
             </p>
           </div>
 
@@ -135,7 +133,7 @@ const Footer = () => {
               Get in Touch
               <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-wave-primary to-wave-secondary" />
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-3 flex flex-col">
               <a
                 href={`mailto:${email}`}
                 className="group inline-flex items-start gap-2 text-neutral-400 hover:text-wave-primary transition-colors duration-200"
