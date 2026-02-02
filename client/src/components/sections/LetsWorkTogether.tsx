@@ -7,7 +7,7 @@ const LetsWorkTogether = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Let's Work Together
         </h2>
-        <p className="text-neutral-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-neutral-300 mb-8 max-w-2xl mx-auto text-[12px] md:text-[14px] leading-4">
           I'm always open to discussing new projects, creative ideas, or
           opportunities to be part of your vision.
         </p>
