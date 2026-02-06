@@ -10,7 +10,7 @@ const portfolioData: PortfolioData = {
     image: '/images/profile.jpg',
     resumeUrl: '/resume.pdf',
     yearsOfExperience: {
-      software: 2,
+      software: 2.5,
       civil: 3,
     },
   },
