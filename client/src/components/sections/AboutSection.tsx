@@ -51,7 +51,7 @@ const AboutSection = () => {
                       {about.yearsOfExperience.civil}+
                     </div>
                     <div className="text-xs text-neutral-400 mt-1">
-                      Years in Engineering
+                      Years in Civil Engineering
                     </div>
                   </div>
                 </div>
