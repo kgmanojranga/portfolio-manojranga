@@ -48,8 +48,11 @@ export interface Experience {
   position: string;
   period: string;
   location?: string;
+  duration?: string;
   description: string;
   projects: Project[];
+  achievements?: string[];
+  technologies?: string;
 }
 
 export interface Education {
@@ -58,6 +61,17 @@ export interface Education {
   institution: string;
   period: string;
   achievements?: string[];
+  verificationLink?: string;
+  verificationId?: string;
+}
+
+export interface Reference {
+  id: string;
+  name: string;
+  position: string;
+  company: string;
+  phone: string;
+  email: string;
 }
 
 export interface Contact {
@@ -66,6 +80,7 @@ export interface Contact {
   location: string;
   linkedin: string;
   github: string;
+  website?: string;
 }
 
 export interface PortfolioData {
@@ -75,4 +90,5 @@ export interface PortfolioData {
   projects: Project[];
   education: Education[];
   contact: Contact;
+  references?: Reference[];
 }

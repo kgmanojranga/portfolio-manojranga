@@ -3,10 +3,10 @@ import type { PortfolioData } from '../types';
 const portfolioData: PortfolioData = {
   about: {
     name: 'Manoj Ranga',
-    title: 'Software Engineer',
+    title: 'Full Stack Software Engineer',
     tagline:
       'Full-Stack Developer | Blockchain Engineer | AI Automation Specialist',
-    bio: 'Software Engineer with 2+ years of professional experience specializing in full-stack development, AI-powered automation, and blockchain solutions. Transitioned from 3+ years in Civil Engineering, bringing strong analytical thinking and project management expertise. Proven track record in building production-ready applications with React/TypeScript frontends, Firebase/NestJS backends, and enterprise-grade systems. Experienced in developing AI-driven workflows for content automation and intelligent decision-making, alongside blockchain protocols on Solana and Ethereum. Delivered end-to-end solutions spanning SaaS platforms, enterprise dashboards, DeFi protocols, and automated testing frameworks. Combines engineering discipline with modern development practices to build scalable, high-performance applications.',
+    bio: 'Software Engineer with 2.5+ years of professional experience specializing in full-stack development, AI-powered automation, and blockchain solutions. Transitioned from 3+ years in Civil Engineering, bringing strong analytical thinking and project management expertise. Proven track record in building production-ready applications with React/TypeScript frontends, Firebase/NestJS backends, and enterprise-grade systems. Experienced in developing AI-driven workflows for content automation and intelligent decision-making, alongside blockchain protocols on Solana and Ethereum. Delivered end-to-end solutions spanning SaaS platforms, enterprise dashboards, DeFi protocols, and automated testing frameworks. Combines engineering discipline with modern development practices to build scalable, high-performance applications.',
     image: '/images/profile.jpg',
     resumeUrl: '/resume.pdf',
     yearsOfExperience: {
@@ -20,7 +20,7 @@ const portfolioData: PortfolioData = {
       id: '1',
       name: 'Programming Languages',
       category: 'languages',
-      items: ['JavaScript', 'TypeScript', 'C#', 'Java', 'Solidity', 'Rust'],
+      items: ['JavaScript', 'TypeScript', 'Solidity', 'Rust', 'Java', 'C#'],
     },
     {
       id: '2',
@@ -74,12 +74,12 @@ const portfolioData: PortfolioData = {
       name: 'Database Management',
       category: 'database',
       items: [
+        'Prisma ORM',
         'PostgreSQL',
         'MySQL',
         'Firebase',
         'Firestore',
         'Redis',
-        'Prisma ORM',
         'BullMQ',
       ],
     },
@@ -123,9 +123,20 @@ const portfolioData: PortfolioData = {
       company: 'MetaruneLabs Pvt Ltd',
       position: 'Software Engineer',
       period: 'August 2023 - Present',
+      duration: '(2.5+ years)',
       location: 'Remote',
       description:
         'Working on full-stack development across multiple production applications spanning web platforms, blockchain protocols, and automation frameworks. Developed scalable frontend interfaces using React and TypeScript, built backend services with Firebase Cloud Functions and NestJS, implemented blockchain smart contracts on Solana using Rust/Anchor framework and Ethereum using Solidity, and created comprehensive test automation frameworks with Selenium WebDriver. Contributed to building enterprise-grade SaaS platforms including real-time video conferencing systems, DeFi token launch protocols, fantasy gaming applications with Web3 integration, and AI-powered character generation platforms. Achieved sub-second transaction detection processing 100+ blockchain events/minute, developed 60-80% database query optimization for trading data, and built comprehensive test suites with cross-browser and mobile device emulation.',
+      achievements: [
+        'Built reusable React component libraries in Turborepo monorepo with LiveKit video conferencing, Ably chat, Zustand state management, and advanced UI interactions',
+        'Created comprehensive test automation framework with Selenium WebDriver, Page Object Model pattern, cross-browser testing, and mobile device emulation across 6 configurations',
+        'Built scalable backends with NestJS, Firebase Cloud Functions (50+ callable functions), PostgreSQL/Prisma achieving 60-80% query optimization, and integrated Sentry, Redis for production systems',
+        'Developed Solana DeFi token launch platform using Rust/Anchor Framework with real-time blockchain monitoring achieving sub-second transaction detection processing 100+ events/minute',
+        'Implemented Web3 integrations with ERC-20/ERC-1155 tokens, Chainlink oracles, wallet connections, and turn-based game logic with MMR matchmaking and real-time Firestore synchronization.',
+        'Designed intelligent automation workflows using n8n integrating Claude, Gemini, and ElevenLabs, developed custom Model Context Protocol (MCP) servers to extend AI capabilities, and built local image generation systems using Stable Diffusion, ComfyUI, custom LoRA training, and ControlNet for facial feature preservation',
+      ],
+      technologies:
+        'React 18, Vite, Chakra UI, Zustand, Selenium WebDriver, Jest, Playwright, TypeScript, NestJS, PostgreSQL, Prisma ORM, Redis, Firebase Functions, Firestore, Rust, Anchor Framework, Solana Web3.js, Solidity, Foundry, Claude, ChatGPT, Gemini, MCP servers.',
       projects: [],
     },
     {
@@ -136,16 +147,42 @@ const portfolioData: PortfolioData = {
       location: 'Remote',
       description:
         'Providing frontend development services for enterprise clients in construction equipment rental and marketing industries. Developed production-ready React applications featuring complex state management, advanced data visualization, and seamless API integration. Built equipment hire management dashboard for CityHire with AG Grid React implementation featuring server-side pagination and CSV export, and created media planning platform for Media Future Market with AI-powered content scoring and interactive timeline visualizations using Recharts. Implemented form validation systems with React Hook Form and Yup, Google Maps API integration, and PDF generation capabilities while delivering responsive UI/UX using TailwindCSS.',
+      achievements: [
+        'Developed enterprise equipment hire management dashboard with AG Grid React featuring server-side pagination, custom cell renderers, CSV export, Chart.js KPI visualizations, and Google Maps integration',
+        'Built media planning platform with AI-powered content scoring, multi-step client workflows with website context extraction, and intelligent file categorization',
+        'Created interactive dashboards with timeline/table views, resizable panels, Recharts visualizations, and dynamic scorecard reporting tracking user edits vs AI suggestions',
+        'Implemented comprehensive form validation with React Hook Form/Yup, role-based access control, reusable component libraries, and responsive TailwindCSS UI/UX',
+      ],
+      technologies:
+        'React 18/19, TypeScript, Redux Toolkit, Vite, TailwindCSS, AG Grid React, Chart.js, React Hook Form, Yup, Google Maps API, Context API, Recharts',
       projects: [],
     },
     {
       id: '3',
+      company: 'Spinta Digital Ltd, United Kingdom',
+      position: 'Visiting Lecturer at Spinta Digital Ltd, United Kingdom',
+      period: 'March 2025',
+      duration: 'EA Technical Pathway Program',
+      location: 'United Kingdom',
+      description:
+        'Conducted a guest lecture session for postgraduate students at York St John University, United Kingdom, delivering end-to-end training on .NET development. Introduced fundamental concepts of the .NET framework and guided students through building RESTful APIs from scratch. Provided hands-on instruction on API development using Visual Studio with Microsoft SQL Server, and JetBrains Rider with Azure Data Studio for macOS users. Additionally, trained students on configuring development environments, setting up IDEs, and integrating databases for full-stack API implementation.',
+      achievements: [
+        'Conducted a guest lecture session for postgraduate students at York St John University, United Kingdom, delivering end-to-end training on .NET development. Introduced fundamental concepts of the .NET framework and guided students through building RESTful APIs from scratch. Provided hands-on instruction on API development using Visual Studio with Microsoft SQL Server, and JetBrains Rider with Azure Data Studio for macOS users. Additionally, trained students on configuring development environments, setting up IDEs, and integrating databases for full-stack API implementation.',
+      ],
+      projects: [],
+    },
+    {
+      id: '4',
       company: 'Maga Engineering Pvt Ltd',
       position: 'Civil Engineer',
       period: 'August 2019 - October 2022',
+      duration: '(3 years 2 months)',
       location: 'Sri Lanka',
       description:
         'Managed aluminium and ceiling fixing sub-contracts for The Grand - Prime Grand Apartment project, handling site inspections, quality control, and coordination with clients and multidisciplinary teams.',
+      achievements: [
+        'Managed aluminium and ceiling fixing sub-contracts for The Grand - Prime Grand Apartment project, conducting site inspections, quality control, and coordinating with clients and multidisciplinary teams to ensure project delivery and compliance',
+      ],
       projects: [],
     },
   ],
@@ -368,16 +405,20 @@ const portfolioData: PortfolioData = {
   education: [
     {
       id: '1',
-      degree: 'BSc. Eng. (Hons) in Civil Engineering',
-      institution: 'University of Moratuwa',
-      period: 'Graduated February 2019',
-      achievements: [
-        'Specialized in Civil Engineering with honors',
-        'Strong foundation in engineering mathematics and analytical problem-solving',
-      ],
+      degree: 'Web Designer Course for Beginners',
+      institution: 'University of Moratuwa | DP Education',
+      period: '',
+      verificationLink: 'http://open.uom.lk/verify',
+      verificationId: 'verify-id: a7IQFcb9e5',
     },
     {
       id: '2',
+      degree: 'BSc. Eng. (Hons) in Civil Engineering',
+      institution: 'University of Moratuwa',
+      period: 'Graduated February 2019',
+    },
+    {
+      id: '3',
       degree: 'G.C.E Advanced Level',
       institution: 'Rahula College Matara',
       period: 'Year 2013',
@@ -393,7 +434,27 @@ const portfolioData: PortfolioData = {
     location: 'Matara, Southern Province, Sri Lanka',
     linkedin: 'https://www.linkedin.com/in/manoj-ranga-76531416b',
     github: 'https://github.com/kgmanojranga',
+    website: 'https://www.kgmanojranga.it.com',
   },
+
+  references: [
+    {
+      id: '1',
+      name: 'Dilshan Wickramasinghe',
+      position: 'Technical Lead',
+      company: 'Talpha Solutions',
+      phone: '071 896 3369',
+      email: 'dilshan@talphasolutions.com',
+    },
+    {
+      id: '2',
+      name: 'Kasun Thilina',
+      position: 'Technical Lead',
+      company: 'Cambio Software',
+      phone: '070 349 1743',
+      email: 'kgkasunthilina@gmail.com',
+    },
+  ],
 };
 
 export default portfolioData;

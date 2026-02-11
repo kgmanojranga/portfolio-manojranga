@@ -3,7 +3,8 @@ import Container from '../components/common/Container';
 import portfolioData from '../data/portfolio';
 
 const ResumePage = () => {
-  const { about, contact } = portfolioData;
+  const { about, contact, experience, education, skills, references } =
+    portfolioData;
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -13,141 +14,11 @@ const ResumePage = () => {
     window.print();
   };
 
-  // Work Experience from the optimized resume
-  const workExperience = [
-    {
-      id: '1',
-      position: 'Software Engineer',
-      company: 'MetaruneLabs Pvt Ltd',
-      period: 'August 2023 - Present',
-      duration: '(2.5+ years)',
-      achievements: [
-        'Built reusable React component libraries in Turborepo monorepo with LiveKit video conferencing, Ably chat, Zustand state management, and advanced UI interactions',
-        'Created comprehensive test automation framework with Selenium WebDriver, Page Object Model pattern, cross-browser testing, and mobile device emulation across 6 configurations',
-        'Built scalable backends with NestJS, Firebase Cloud Functions (50+ callable functions), PostgreSQL/Prisma achieving 60-80% query optimization, and integrated Sentry, Redis for production systems',
-        'Developed Solana DeFi token launch platform using Rust/Anchor Framework with real-time blockchain monitoring achieving sub-second transaction detection processing 100+ events/minute',
-        'Implemented Web3 integrations with ERC-20/ERC-1155 tokens, Chainlink oracles, wallet connections, and turn-based game logic with MMR matchmaking and real-time Firestore synchronization',
-      ],
-      technologies:
-        'React 18, Vite, Chakra UI, Zustand, Selenium WebDriver, Jest, Playwright, TypeScript, NestJS, PostgreSQL, Prisma ORM, Redis, Firebase Functions, Firestore, Rust, Anchor Framework, Solana Web3.js, Solidity, Foundry',
-    },
-    {
-      id: '2',
-      position: 'Freelance Software Developer',
-      company: 'Talpha Solutions',
-      period: 'November 2024 - November 2025',
-      achievements: [
-        'Developed enterprise equipment hire management dashboard with AG Grid React featuring server-side pagination, custom cell renderers, CSV export, Chart.js KPI visualizations, and Google Maps integration',
-        'Built media planning platform with AI-powered content scoring, multi-step client workflows with website context extraction, and intelligent file categorization',
-        'Created interactive dashboards with timeline/table views, resizable panels, Recharts visualizations, and dynamic scorecard reporting tracking user edits vs AI suggestions',
-        'Implemented comprehensive form validation with React Hook Form/Yup, role-based access control, reusable component libraries, and responsive TailwindCSS UI/UX',
-      ],
-      technologies:
-        'React 18/19, TypeScript, Redux Toolkit, Vite, TailwindCSS, AG Grid React, Chart.js, React Hook Form, Yup, Google Maps API, Context API, Recharts',
-    },
-    {
-      id: '3',
-      position: 'Civil Engineer',
-      company: 'Maga Engineering Pvt Ltd',
-      period: 'August 2019 - October 2022',
-      duration: '(3 years 2 months)',
-      achievements: [
-        'Managed aluminium and ceiling fixing sub-contracts for The Grand - Prime Grand Apartment project, conducting site inspections, quality control, and coordinating with clients and multidisciplinary teams to ensure project delivery and compliance',
-      ],
-    },
-  ];
-
-  // Education from the optimized resume
-  const education = [
-    {
-      id: '1',
-      degree: 'BSc. Eng. (Hons) in Civil Engineering',
-      institution: 'University of Moratuwa',
-      period: 'Graduated February 2019',
-    },
-    {
-      id: '2',
-      degree: 'G.C.E Advanced Level',
-      institution: 'Rahula College Matara',
-      period: 'Year 2013',
-      achievements: [
-        'Science Stream: Mathematics (A), Chemistry (A), Physics (A)',
-      ],
-    },
-  ];
-
-  // Technical Skills organized as per the optimized resume
-  const technicalSkills = [
-    {
-      category: 'Programming Languages',
-      items: ['JavaScript', 'TypeScript', 'C#', 'Java', 'Solidity', 'Rust'],
-    },
-    {
-      category: 'Frontend Development',
-      items: ['React', 'Next.js', 'HTML', 'CSS', 'TailwindCSS', 'Chakra UI'],
-    },
-    {
-      category: 'Backend Development',
-      items: [
-        'Node.js',
-        'Express',
-        'NestJS',
-        '.NET',
-        'REST API Development',
-        'Firebase Cloud Functions',
-      ],
-    },
-    {
-      category: 'Blockchain & Web3',
-      items: [
-        'Smart Contract Development (Solidity, Rust/Anchor)',
-        'Ethereum',
-        'Solana',
-        'Hardhat',
-        'Foundry',
-        'Anchor Framework',
-        'Chainlink',
-      ],
-    },
-    {
-      category: 'Database Management',
-      items: [
-        'PostgreSQL',
-        'MySQL',
-        'Firebase',
-        'Firestore',
-        'Redis',
-        'Prisma ORM',
-      ],
-    },
-    {
-      category: 'AI & Automation',
-      items: [
-        'n8n',
-        'AI Integration (OpenAI, ElevenLabs, Gemini)',
-        'MCP Protocols',
-      ],
-    },
-    {
-      category: 'DevOps & Testing',
-      items: [
-        'CI/CD Pipelines',
-        'Automated Deployment',
-        'Selenium',
-        'Playwright',
-        'Mocha',
-        'Chai',
-        'Jest',
-        'Web Automation',
-        'Docker',
-        'Github Actions',
-      ],
-    },
-    {
-      category: 'Additional',
-      items: ['Unity Game Development'],
-    },
-  ];
+  // Transform skills data for resume display
+  const technicalSkills = skills.map((skill) => ({
+    category: skill.name,
+    items: skill.items || [],
+  }));
 
   return (
     <div className="relative min-h-screen bg-neutral-950 text-neutral-200">
@@ -291,6 +162,29 @@ const ResumePage = () => {
                   </svg>
                   {contact.github}
                 </a>
+                {contact.website && (
+                  <a
+                    href={contact.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 flex items-center gap-1.5 hover:text-wave-primary transition-colors print:text-neutral-700"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                      />
+                    </svg>
+                    {contact.website}
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -336,7 +230,7 @@ const ResumePage = () => {
             </h2>
             <div className="w-full h-px bg-gradient-to-r from-wave-primary via-wave-secondary to-transparent mb-6 print:bg-neutral-400" />
             <div className="space-y-8">
-              {workExperience.map((exp) => (
+              {experience.map((exp) => (
                 <div key={exp.id} className="space-y-3">
                   <div>
                     <h3 className="text-lg font-bold text-white print:text-black">
@@ -352,16 +246,18 @@ const ResumePage = () => {
                     </p>
                   </div>
 
-                  <ul className="space-y-2 text-sm text-neutral-300 print:text-neutral-700">
-                    {exp.achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-wave-primary print:text-neutral-700 mt-1 flex-shrink-0">
-                          •
-                        </span>
-                        <span className="leading-relaxed">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {exp.achievements && exp.achievements.length > 0 && (
+                    <ul className="space-y-2 text-sm text-neutral-300 print:text-neutral-700">
+                      {exp.achievements.map((achievement, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-wave-primary print:text-neutral-700 mt-1 flex-shrink-0">
+                            •
+                          </span>
+                          <span className="leading-relaxed">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                   {exp.technologies && (
                     <div className="mt-3">
@@ -379,7 +275,7 @@ const ResumePage = () => {
           </div>
 
           {/* Education Section */}
-          <div className="p-8 md:p-12">
+          <div className="p-8 md:p-12 border-b border-white/10 print:border-neutral-300">
             <h2 className="text-2xl font-bold text-white print:text-black mb-4 uppercase tracking-wide">
               Education
             </h2>
@@ -391,8 +287,24 @@ const ResumePage = () => {
                     {edu.degree}
                   </h3>
                   <p className="text-neutral-300 print:text-neutral-700 font-medium text-sm">
-                    {edu.institution} | {edu.period}
+                    {edu.institution}
+                    {edu.period && ` | ${edu.period}`}
                   </p>
+                  {edu.verificationLink && (
+                    <div className="mt-1 text-sm text-neutral-300 print:text-neutral-700">
+                      <a
+                        href={edu.verificationLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-wave-primary transition-colors print:text-neutral-700"
+                      >
+                        {edu.verificationLink}
+                      </a>
+                      {edu.verificationId && (
+                        <p className="mt-1">{edu.verificationId}</p>
+                      )}
+                    </div>
+                  )}
                   {edu.achievements && edu.achievements.length > 0 && (
                     <ul className="mt-2 space-y-1 text-sm text-neutral-300 print:text-neutral-700">
                       {edu.achievements.map((achievement, idx) => (
@@ -409,6 +321,43 @@ const ResumePage = () => {
               ))}
             </div>
           </div>
+
+          {/* References Section */}
+          {references && references.length > 0 && (
+            <div className="p-8 md:p-12">
+              <h2 className="text-2xl font-bold text-white print:text-black mb-4 uppercase tracking-wide">
+                Reference
+              </h2>
+              <div className="w-full h-px bg-gradient-to-r from-wave-primary via-wave-secondary to-transparent mb-6 print:bg-neutral-400" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {references.map((ref) => (
+                  <div key={ref.id} className="space-y-1">
+                    <h3 className="text-lg font-bold text-white print:text-black">
+                      {ref.name}
+                    </h3>
+                    <p className="text-neutral-300 print:text-neutral-700 text-sm">
+                      {ref.position}
+                    </p>
+                    <p className="text-neutral-300 print:text-neutral-700 text-sm">
+                      {ref.company}
+                    </p>
+                    <p className="text-neutral-300 print:text-neutral-700 text-sm font-semibold">
+                      Tel: {ref.phone}
+                    </p>
+                    <p className="text-neutral-300 print:text-neutral-700 text-sm">
+                      <span className="font-semibold">Email: </span>
+                      <a
+                        href={`mailto:${ref.email}`}
+                        className="text-neutral-400 hover:text-wave-primary transition-colors print:text-neutral-700"
+                      >
+                        {ref.email}
+                      </a>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer Note - Hidden when printing */}
